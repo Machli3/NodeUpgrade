@@ -1,0 +1,357 @@
+# NodeUpgrade Korean translation.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: NodeUpgrade\n"
+"POT-Creation-Date: 2026-10-08 07:14\n"
+"PO-Revision-Date: 2026-10-08 07:14\n"
+"Language-Team: \n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. Key:	NoTarget
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(109)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(109)
+msgctxt "NodeUpgradeDebug,NoTarget"
+msgid "Aim at a resource node (or at an extractor built on it) first."
+msgstr ""
+
+#. Key:	InfoNode
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(126)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(126)
+msgctxt "NodeUpgradeDebug,InfoNode"
+msgid "Node {Name}: {Resource} ({Class}), kind {Kind}"
+msgstr ""
+
+#. Key:	InfoPurity
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(132)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(132)
+msgctxt "NodeUpgradeDebug,InfoPurity"
+msgid "Purity {Purity} | original {Original} | modified by the mod: {Modified} | cost entry: {Entry}"
+msgstr ""
+
+#. Key:	No
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(135)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(135)
+msgctxt "NodeUpgradeDebug,No"
+msgid "no"
+msgstr ""
+
+#. Key:	Yes
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(135)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(135)
+msgctxt "NodeUpgradeDebug,Yes"
+msgid "yes"
+msgstr ""
+
+#. Key:	NoEntry
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(136)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(136)
+msgctxt "NodeUpgradeDebug,NoEntry"
+msgid "none"
+msgstr ""
+
+#. Key:	InfoPaid
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(142)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(142)
+msgctxt "NodeUpgradeDebug,InfoPaid"
+msgid "Paid for {Tier}: {Items}"
+msgstr ""
+
+#. Key:	InfoExtractor
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(154)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(154)
+msgctxt "NodeUpgradeDebug,InfoExtractor"
+msgid "{Name}: {Rate}/min, cycle {Cycle} s"
+msgstr ""
+
+#. Key:	InfoGeoThermal
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(165)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(165)
+msgctxt "NodeUpgradeDebug,InfoGeoThermal"
+msgid "{Name}: {Min} - {Max} MW"
+msgstr ""
+
+#. Key:	InfoNoBuilding
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(173)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(173)
+msgctxt "NodeUpgradeDebug,InfoNoBuilding"
+msgid "No extractor or generator on this node."
+msgstr ""
+
+#. Key:	ValidateNotLoaded
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(202)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(202)
+msgctxt "NodeUpgradeDebug,ValidateNotLoaded"
+msgid "No cost table loaded. Check FactoryGame.log for LogNodeUpgrade errors."
+msgstr ""
+
+#. Key:	ValidateMissing
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(218)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(218)
+msgctxt "NodeUpgradeDebug,ValidateMissing"
+msgid "{Entry} / {Tier}: item class {Class} not found"
+msgstr ""
+
+#. Key:	ValidateSummary
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(226)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(226)
+msgctxt "NodeUpgradeDebug,ValidateSummary"
+msgid "{Entries} entries, {Found} / {Total} item classes found, refund ratio {Ratio}. File: {Path}"
+msgstr ""
+
+#. Key:	ReloadDone
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(250)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(250)
+msgctxt "NodeUpgradeDebug,ReloadDone"
+msgid "costs.json reloaded: {Result}, {Entries} entries, {Errors} errors, {Warnings} warnings. Already paid refunds are unchanged."
+msgstr ""
+
+#. Key:	Failed
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(251)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(251)
+msgctxt "NodeUpgradeDebug,Failed"
+msgid "failed (previous table kept)"
+msgstr ""
+
+#. Key:	Ok
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(251)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(251)
+msgctxt "NodeUpgradeDebug,Ok"
+msgid "ok"
+msgstr ""
+
+#. Key:	None
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(37)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(37)
+msgctxt "NodeUpgradeDebug,None"
+msgid "none"
+msgstr ""
+
+#. Key:	ItemAmount
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(45)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(45)
+msgctxt "NodeUpgradeDebug,ItemAmount"
+msgid "{Amount} x {Item}"
+msgstr ""
+
+#. Key:	UnknownItem
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(47)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(47)
+msgctxt "NodeUpgradeDebug,UnknownItem"
+msgid "unknown item"
+msgstr ""
+
+#. Key:	ItemSeparator
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(49)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(49)
+msgctxt "NodeUpgradeDebug,ItemSeparator"
+msgid ", "
+msgstr ""
+
+#. Key:	Nothing
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(49)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(49)
+msgctxt "NodeUpgradeDebug,Nothing"
+msgid "nothing"
+msgstr ""
+
+#. Key:	Usage
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(59)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(59)
+msgctxt "NodeUpgradeDebug,Usage"
+msgid "/nodeupgrade (alias /nu) info | upgrade | downgrade | validate | reload"
+msgstr ""
+
+#. Key:	NoCharacter
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(84)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeChatCommand.cpp(84)
+msgctxt "NodeUpgradeDebug,NoCharacter"
+msgid "This command needs you on foot (not in a vehicle)."
+msgstr ""
+
+#. Key:	input.open_menu.description
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(100)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(100)
+msgctxt "NodeUpgrade,input.open_menu.description"
+msgid "Opens the upgrade menu of the resource node you are looking at."
+msgstr "바라보고 있는 자원 노드의 강화 메뉴를 엽니다."
+
+#. Key:	msg.downgraded
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(108)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(108)
+msgctxt "NodeUpgrade,msg.downgraded"
+msgid "Node downgraded to {Purity}"
+msgstr "노드가 {Purity}(으)로 낮아졌습니다"
+
+#. Key:	msg.upgraded
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(108)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(108)
+msgctxt "NodeUpgrade,msg.upgraded"
+msgid "Node upgraded to {Purity}"
+msgstr "노드가 {Purity}(으)로 강화되었습니다"
+
+#. Key:	err.not_enough_items
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(111)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(111)
+msgctxt "NodeUpgrade,err.not_enough_items"
+msgid "Not enough items"
+msgstr "아이템이 부족합니다"
+
+#. Key:	err.inventory_full
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(113)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(113)
+msgctxt "NodeUpgrade,err.inventory_full"
+msgid "Not enough inventory space for the refund"
+msgstr "환급받을 인벤토리 공간이 부족합니다"
+
+#. Key:	err.config
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(119)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(119)
+msgctxt "NodeUpgrade,err.config"
+msgid "No valid upgrade cost is defined for this node"
+msgstr "이 노드에는 유효한 강화 비용이 설정되어 있지 않습니다"
+
+#. Key:	err.unsupported
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(123)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(123)
+msgctxt "NodeUpgrade,err.unsupported"
+msgid "This node cannot be upgraded"
+msgstr "이 노드는 강화할 수 없습니다"
+
+#. Key:	ui.title
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(26)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(26)
+msgctxt "NodeUpgrade,ui.title"
+msgid "Resource node upgrade"
+msgstr "자원 노드 강화"
+
+#. Key:	ui.current_purity
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(27)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(27)
+msgctxt "NodeUpgrade,ui.current_purity"
+msgid "Current purity"
+msgstr "현재 순도"
+
+#. Key:	ui.new_purity
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(28)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(28)
+msgctxt "NodeUpgrade,ui.new_purity"
+msgid "New purity"
+msgstr "새 순도"
+
+#. Key:	ui.cost
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(29)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(29)
+msgctxt "NodeUpgrade,ui.cost"
+msgid "Cost"
+msgstr "비용"
+
+#. Key:	ui.refund
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(30)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(30)
+msgctxt "NodeUpgrade,ui.refund"
+msgid "Refund"
+msgstr "환급"
+
+#. Key:	ui.upgrade
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(31)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(31)
+msgctxt "NodeUpgrade,ui.upgrade"
+msgid "Upgrade"
+msgstr "강화"
+
+#. Key:	ui.downgrade
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(32)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(32)
+msgctxt "NodeUpgrade,ui.downgrade"
+msgid "Downgrade"
+msgstr "등급 낮추기"
+
+#. Key:	ui.close
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(33)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(33)
+msgctxt "NodeUpgrade,ui.close"
+msgid "Close"
+msgstr "닫기"
+
+#. Key:	ui.amount_owned
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(37)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(37)
+msgctxt "NodeUpgrade,ui.amount_owned"
+msgid "{Owned} / {Required}"
+msgstr "{Owned} / {Required}"
+
+#. Key:	ui.missing
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(44)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(44)
+msgctxt "NodeUpgrade,ui.missing"
+msgid "Missing: {Count}"
+msgstr "부족: {Count}"
+
+#. Key:	ui.extraction_rate
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(54)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(54)
+msgctxt "NodeUpgrade,ui.extraction_rate"
+msgid "Extraction rate ×{Before} → ×{After}"
+msgstr "채굴 속도 ×{Before} → ×{After}"
+
+#. Key:	ui.refund_header
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(61)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(61)
+msgctxt "NodeUpgrade,ui.refund_header"
+msgid "Refund if downgraded to {Purity}"
+msgstr "{Purity}(으)로 낮출 경우 환급"
+
+#. Key:	ui.refund_amount
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(66)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(66)
+msgctxt "NodeUpgrade,ui.refund_amount"
+msgid "+{Amount}"
+msgstr "+{Amount}"
+
+#. Key:	purity.impure
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(89)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(89)
+msgctxt "NodeUpgrade,purity.impure"
+msgid "Impure"
+msgstr "불순"
+
+#. Key:	purity.normal
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(90)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(90)
+msgctxt "NodeUpgrade,purity.normal"
+msgid "Normal"
+msgstr "보통"
+
+#. Key:	purity.pure
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(91)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(91)
+msgctxt "NodeUpgrade,purity.pure"
+msgid "Pure"
+msgstr "순수"
+
+#. Key:	err.max_purity
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(96)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(96)
+msgctxt "NodeUpgrade,err.max_purity"
+msgid "This node is already at maximum purity"
+msgstr "이 노드는 이미 최대 순도입니다"
+
+#. Key:	err.base_purity
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(97)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(97)
+msgctxt "NodeUpgrade,err.base_purity"
+msgid "This node cannot go below its original purity"
+msgstr "이 노드는 원래 순도 아래로 내릴 수 없습니다"
+
+#. Key:	input.open_menu
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(99)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(99)
+msgctxt "NodeUpgrade,input.open_menu"
+msgid "Open node upgrade menu"
+msgstr "노드 강화 메뉴 열기"
+

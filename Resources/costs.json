@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "_comment": "Source de verite des couts. Modifiable sans toucher au code. itemClass = nom de classe de descripteur suppose (NON VERIFIE) : le code doit les resoudre au demarrage et logger un avertissement clair si une classe est introuvable.",
+  "refund": {
+    "ratio": 0.5,
+    "rounding": "floor",
+    "basedOn": "amount actually paid for that tier (stored per node), never on current config"
+  },
+  "tiers": ["Impure->Normal", "Normal->Pure"],
+  "classNamesVerified": false,
+  "resources": [
+    {
+      "id": "iron",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_OreIron_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_IronPlate_C", "name": "Iron Plate", "amount": 450 } ], "rawEquivalent": 675, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_IronPlateReinforced_C", "name": "Reinforced Iron Plate", "amount": 150 } ], "rawEquivalent": 1800, "confidence": "high" }
+      }
+    },
+    {
+      "id": "copper",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_OreCopper_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_CopperSheet_C", "name": "Copper Sheet", "amount": 340 } ], "rawEquivalent": 680, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_CopperSheet_C", "name": "Copper Sheet", "amount": 900 } ], "rawEquivalent": 1800, "confidence": "high" }
+      }
+    },
+    {
+      "id": "limestone",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_Stone_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Cement_C", "name": "Concrete", "amount": 225 } ], "rawEquivalent": 675, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Cement_C", "name": "Concrete", "amount": 600 } ], "rawEquivalent": 1800, "confidence": "high" }
+      }
+    },
+    {
+      "id": "coal",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_Coal_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_SteelIngot_C", "name": "Steel Ingot", "amount": 340 } ], "rawEquivalent": 680, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_SteelPlate_C", "name": "Steel Beam", "amount": 225 } ], "rawEquivalent": 1800, "confidence": "high" }
+      }
+    },
+    {
+      "id": "caterium",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_OreGold_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_GoldIngot_C", "name": "Caterium Ingot", "amount": 133 } ], "rawEquivalent": 400, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_HighSpeedWire_C", "name": "Quickwire", "amount": 1700 } ], "rawEquivalent": 1020, "confidence": "high" }
+      }
+    },
+    {
+      "id": "raw_quartz",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_RawQuartz_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Silica_C", "name": "Silica", "amount": 670 } ], "rawEquivalent": 402, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_QuartzCrystal_C", "name": "Quartz Crystal", "amount": 600 } ], "rawEquivalent": 1000, "confidence": "high" }
+      }
+    },
+    {
+      "id": "sulfur",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_Sulfur_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Gunpowder_C", "name": "Black Powder", "amount": 400 } ], "rawEquivalent": 400, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_CompactedCoal_C", "name": "Compacted Coal", "amount": 500 } ], "rawEquivalent": 1000, "confidence": "high" }
+      }
+    },
+    {
+      "id": "bauxite",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_OreBauxite_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_AluminumIngot_C", "name": "Aluminum Ingot", "amount": 530 } ], "rawEquivalent": 400, "confidence": "estimate" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_AluminumCasing_C", "name": "Aluminum Casing", "amount": 900 } ], "rawEquivalent": 1000, "confidence": "estimate" }
+      }
+    },
+    {
+      "id": "uranium",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_OreUranium_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_SteelPlateReinforced_C", "name": "Encased Industrial Beam", "amount": 5 } ], "rawEquivalent": 225, "confidence": "estimate" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_ElectromagneticControlRod_C", "name": "Electromagnetic Control Rod", "amount": 12 } ], "rawEquivalent": 500, "confidence": "estimate" }
+      }
+    },
+    {
+      "id": "sam",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_SAM_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_SAMIngot_C", "name": "Reanimated SAM", "amount": 50 } ], "rawEquivalent": 200, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_SAMFluctuator_C", "name": "SAM Fluctuator", "amount": 28 } ], "rawEquivalent": 560, "confidence": "high" }
+      }
+    },
+    {
+      "id": "crude_oil_node",
+      "nodeKind": "fluid_node",
+      "resourceClass": "Desc_LiquidOil_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Plastic_C", "name": "Plastic", "amount": 270 } ], "rawEquivalent": 405, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Rubber_C", "name": "Rubber", "amount": 670 } ], "rawEquivalent": 1005, "confidence": "high" }
+      }
+    },
+    {
+      "id": "crude_oil_well_satellite",
+      "nodeKind": "fracking_satellite",
+      "resourceClass": "Desc_LiquidOil_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Plastic_C", "name": "Plastic", "amount": 200 } ], "rawEquivalent": 300, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Rubber_C", "name": "Rubber", "amount": 500 } ], "rawEquivalent": 750, "confidence": "high" }
+      }
+    },
+    {
+      "id": "water_well_satellite",
+      "nodeKind": "fracking_satellite",
+      "resourceClass": "Desc_Water_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_SteelPipe_C", "name": "Steel Pipe", "amount": 100 } ], "rawEquivalent": 300, "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_SteelPlate_C", "name": "Steel Beam", "amount": 95 } ], "rawEquivalent": 760, "confidence": "high" }
+      }
+    },
+    {
+      "id": "nitrogen_well_satellite",
+      "nodeKind": "fracking_satellite",
+      "resourceClass": "Desc_NitrogenGas_C",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_AluminumCasing_C", "name": "Aluminum Casing", "amount": 270 } ], "rawEquivalent": 300, "confidence": "estimate" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_AluminumCasing_C", "name": "Aluminum Casing", "amount": 680 } ], "rawEquivalent": 750, "confidence": "estimate" }
+      }
+    },
+    {
+      "id": "geyser",
+      "nodeKind": "geyser",
+      "resourceClass": null,
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Stator_C", "name": "Stator", "amount": 30 } ], "rawEquivalent": 390, "confidence": "medium" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Motor_C", "name": "Motor", "amount": 20 } ], "rawEquivalent": 970, "confidence": "medium" }
+      }
+    }
+  ]
+}
