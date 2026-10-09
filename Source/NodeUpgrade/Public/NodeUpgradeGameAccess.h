@@ -6,6 +6,8 @@ class AActor;
 class AFGBuildableFrackingActivator;
 class AFGBuildableGeneratorGeoThermal;
 class AFGBuildableResourceExtractor;
+class AFGCharacterPlayer;
+class UNodeUpgradeInteractionComponent;
 
 /**
  * The only place that touches private / protected game members.
@@ -26,4 +28,10 @@ public:
 
 	/** AFGBuildableGeneratorGeoThermal::mExtractableResource (private): the geyser this generator is built on. */
 	static AActor* GetGeoThermalResource(const AFGBuildableGeneratorGeoThermal* Generator);
+
+	/**
+	 * AFGCharacterPlayer::mOnBestUseableActorUpdated (protected): fired by the game when the actor the player looks at and can use
+	 * changes, the event its own look-at prompt follows. Binds the component's HandleBestUsableActorUpdated once.
+	 */
+	static void BindBestUsableActorUpdated(AFGCharacterPlayer* Character, UNodeUpgradeInteractionComponent* Component);
 };

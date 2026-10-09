@@ -1,10 +1,16 @@
 #include "NodeUpgradeInteractionComponent.h"
 
 #include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "Engine/LocalPlayer.h"
 #include "FGCharacterPlayer.h"
+#include "FGInputLibrary.h"
 #include "FGPlayerController.h"
+#include "Input/Events.h"
 #include "InputAction.h"
 #include "NodeUpgrade.h"
+#include "NodeUpgradeGameAccess.h"
+#include "NodeUpgradeLookAtHint.h"
 #include "NodeUpgradeMenuWidget.h"
 #include "NodeUpgradeTargeting.h"
 #include "NodeUpgradeText.h"
@@ -20,6 +26,31 @@ namespace
 	 */
 	const TCHAR* const OpenMenuActionPath = TEXT("/NodeUpgrade/Inputs/IA_NodeUpgrade_OpenMenu.IA_NodeUpgrade_OpenMenu");
 	const TCHAR* const MappingContextPath = TEXT("/NodeUpgrade/Inputs/MC_NodeUpgrade.MC_NodeUpgrade");
+
+	/** PlayerMappableKeySettings name of IA_NodeUpgrade_OpenMenu (tools/create-input-assets.py, IA_KEY_NAME): the game's input functions use it. */
+	const TCHAR* const MenuKeyMappingName = TEXT("NodeUpgrade_OpenMenu");
+
+	bool IsModifierDown(const FKeyEvent& KeyEvent, const FKey& Modifier)
+	{
+		if (Modifier == EKeys::LeftShift || Modifier == EKeys::RightShift)
+		{
+			return KeyEvent.IsShiftDown();
+		}
+		if (Modifier == EKeys::LeftControl || Modifier == EKeys::RightControl)
+		{
+			return KeyEvent.IsControlDown();
+		}
+		if (Modifier == EKeys::LeftAlt || Modifier == EKeys::RightAlt)
+		{
+			return KeyEvent.IsAltDown();
+		}
+		if (Modifier == EKeys::LeftCommand || Modifier == EKeys::RightCommand)
+		{
+			return KeyEvent.IsCommandDown();
+		}
+		// Not a modifier the key event can report: it does not prevent closing the menu.
+		return true;
+	}
 
 	bool SetTextProperty(UObject* Object, const TCHAR* PropertyName, const FText& Value)
 	{
@@ -77,6 +108,7 @@ void UNodeUpgradeInteractionComponent::BindToPlayer(AFGCharacterPlayer* Characte
 		Component->RegisterComponent();
 	}
 	Component->BindInput(InputComponent);
+	FNodeUpgradeGameAccess::BindBestUsableActorUpdated(Character, Component);
 }
 
 void UNodeUpgradeInteractionComponent::BindInput(UInputComponent* InputComponent)
@@ -148,4 +180,91 @@ void UNodeUpgradeInteractionComponent::NotifyMenuClosed(UNodeUpgradeMenuWidget* 
 	{
 		mOpenMenu = nullptr;
 	}
+	// The purity may have changed while the player keeps looking at the same node: the game sends no event for that.
+	if (AFGCharacterPlayer* Character = Cast<AFGCharacterPlayer>(GetOwner()))
+	{
+		FNodeUpgradeLookAtHint::Refresh(Character, Character->GetBestUsableActor());
+	}
+}
+
+void UNodeUpgradeInteractionComponent::HandleBestUsableActorUpdated(bool bIsValid, AActor* BestUsableActor)
+{
+	FNodeUpgradeLookAtHint::Refresh(Cast<AFGCharacterPlayer>(GetOwner()), bIsValid ? BestUsableActor : nullptr);
+}
+
+bool UNodeUpgradeInteractionComponent::GetMenuKey(APlayerController* PlayerController, FKey& OutKey, TArray<FKey>& OutModifiers)
+{
+	OutKey = FKey();
+	OutModifiers.Reset();
+	if (PlayerController == nullptr)
+	{
+		return false;
+	}
+
+	// The game's own lookup: the player's binding, else the default one.
+	if (UFGInputLibrary::GetCurrentMappingForAction(PlayerController, FName(MenuKeyMappingName), OutKey, OutModifiers) && OutKey.IsValid())
+	{
+		return true;
+	}
+
+	// Otherwise the keys Enhanced Input really has mapped to the action right now.
+	OutKey = FKey();
+	OutModifiers.Reset();
+	const UInputAction* Action = LoadObject<UInputAction>(nullptr, OpenMenuActionPath);
+	const UEnhancedInputLocalPlayerSubsystem* InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer());
+	if (Action != nullptr && InputSubsystem != nullptr)
+	{
+		for (const FKey& Key : InputSubsystem->QueryKeysMappedToAction(Action))
+		{
+			if (Key.IsValid())
+			{
+				OutKey = Key;
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+FText UNodeUpgradeInteractionComponent::GetMenuKeyName(APlayerController* PlayerController)
+{
+	if (PlayerController == nullptr)
+	{
+		return FText::GetEmpty();
+	}
+	// Modifiers included, abbreviated like the game's own key hints.
+	FText KeyName = UFGInputLibrary::GetInputActionNameAsText(PlayerController, FName(MenuKeyMappingName), /*abbreviateKeyNames*/ true);
+	if (KeyName.IsEmpty())
+	{
+		FKey Key;
+		TArray<FKey> Modifiers;
+		if (GetMenuKey(PlayerController, Key, Modifiers))
+		{
+			KeyName = UFGInputLibrary::GetAbbreviatedKeyName(Key);
+		}
+	}
+	return KeyName;
+}
+
+bool UNodeUpgradeInteractionComponent::IsMenuKeyEvent(APlayerController* PlayerController, const FKeyEvent& KeyEvent)
+{
+	// A held key repeats: only the first press counts, otherwise holding the key would reopen and close the menu.
+	if (KeyEvent.IsRepeat())
+	{
+		return false;
+	}
+	FKey Key;
+	TArray<FKey> Modifiers;
+	if (!GetMenuKey(PlayerController, Key, Modifiers) || KeyEvent.GetKey() != Key)
+	{
+		return false;
+	}
+	for (const FKey& Modifier : Modifiers)
+	{
+		if (!IsModifierDown(KeyEvent, Modifier))
+		{
+			return false;
+		}
+	}
+	return true;
 }

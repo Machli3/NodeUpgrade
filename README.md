@@ -7,7 +7,8 @@ A Satisfactory mod: pay items to raise or lower the purity of any resource node 
 ![The upgrade menu](images/menu.jpg)
 
 ## Features
-- Native-looking menu (key **Y**, rebindable): built from the game's own window, buttons, cost slots, icons and fonts.
+- Native-looking menu (key **Y**, rebindable): built from the game's own window, buttons, cost slots, icons and fonts. Press the key again to close it.
+- A hint line under the game's look-at prompt, *Press [Y] to upgrade this node*, on nodes you can upgrade and on the miners and extractors built on them. It is inserted into the game's own prompt widget with an SML widget hook and updates only when the looked-at actor changes.
 - Instant effect on miners and extractors already standing on the node.
 - Downgrade refunds 50% of what was actually paid for that step, rounded down; a node never goes below its original purity.
 - Payment and purity change happen together or not at all.
@@ -24,7 +25,7 @@ Built against SML 3.12 and game version CL502094 (Satisfactory 1.2). Windows onl
 
 | Folder | Contents |
 |---|---|
-| `Source/` | All the C++ code (menu, rules, save data, targeting, chat commands). |
+| `Source/` | All the C++ code (menu, look-at hint, rules, save data, targeting, chat commands). |
 | `Content/` | The input action, the input mapping context, the Game Feature Data asset and the translations (`Localization/`). |
 | `Resources/` | `costs.json` (prices per resource) and the in-game icon. |
 | `Config/` | Alpakit and access transformer settings. |

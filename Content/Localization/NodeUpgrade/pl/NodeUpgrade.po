@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NodeUpgrade\n"
-"POT-Creation-Date: 2026-10-08 07:14\n"
-"PO-Revision-Date: 2026-10-08 07:14\n"
+"POT-Creation-Date: 2026-10-09 13:09\n"
+"PO-Revision-Date: 2026-10-09 13:09\n"
 "Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -173,51 +173,65 @@ msgctxt "NodeUpgradeDebug,NoCharacter"
 msgid "This command needs you on foot (not in a vehicle)."
 msgstr ""
 
+#. Key:	hint.open
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(101)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(101)
+msgctxt "NodeUpgrade,hint.open"
+msgid "Press {Key} to upgrade this node"
+msgstr "Naciśnij {Key}, aby ulepszyć ten węzeł"
+
+#. Key:	input.open_menu
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(113)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(113)
+msgctxt "NodeUpgrade,input.open_menu"
+msgid "Open node upgrade menu"
+msgstr "Otwórz menu ulepszania węzła"
+
 #. Key:	input.open_menu.description
-#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(100)
-#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(100)
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(114)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(114)
 msgctxt "NodeUpgrade,input.open_menu.description"
 msgid "Opens the upgrade menu of the resource node you are looking at."
 msgstr "Otwiera menu ulepszania węzła zasobów, na który patrzysz."
 
 #. Key:	msg.downgraded
-#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(108)
-#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(108)
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(122)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(122)
 msgctxt "NodeUpgrade,msg.downgraded"
 msgid "Node downgraded to {Purity}"
 msgstr "Węzeł obniżony do: {Purity}"
 
 #. Key:	msg.upgraded
-#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(108)
-#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(108)
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(122)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(122)
 msgctxt "NodeUpgrade,msg.upgraded"
 msgid "Node upgraded to {Purity}"
 msgstr "Węzeł ulepszony do: {Purity}"
 
 #. Key:	err.not_enough_items
-#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(111)
-#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(111)
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(125)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(125)
 msgctxt "NodeUpgrade,err.not_enough_items"
 msgid "Not enough items"
 msgstr "Za mało przedmiotów"
 
 #. Key:	err.inventory_full
-#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(113)
-#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(113)
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(127)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(127)
 msgctxt "NodeUpgrade,err.inventory_full"
 msgid "Not enough inventory space for the refund"
 msgstr "Za mało miejsca w ekwipunku na zwrot"
 
 #. Key:	err.config
-#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(119)
-#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(119)
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(133)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(133)
 msgctxt "NodeUpgrade,err.config"
 msgid "No valid upgrade cost is defined for this node"
 msgstr "Dla tego węzła nie zdefiniowano prawidłowego kosztu ulepszenia"
 
 #. Key:	err.unsupported
-#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(123)
-#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(123)
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(137)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(137)
 msgctxt "NodeUpgrade,err.unsupported"
 msgid "This node cannot be upgraded"
 msgstr "Tego węzła nie można ulepszyć"
@@ -347,11 +361,4 @@ msgstr "Ten węzeł ma już maksymalną czystość"
 msgctxt "NodeUpgrade,err.base_purity"
 msgid "This node cannot go below its original purity"
 msgstr "Ten węzeł nie może spaść poniżej swojej pierwotnej czystości"
-
-#. Key:	input.open_menu
-#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(99)
-#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(99)
-msgctxt "NodeUpgrade,input.open_menu"
-msgid "Open node upgrade menu"
-msgstr "Otwórz menu ulepszania węzła"
 

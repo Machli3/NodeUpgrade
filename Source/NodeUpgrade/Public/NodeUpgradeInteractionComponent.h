@@ -4,10 +4,14 @@
 #include "Components/ActorComponent.h"
 #include "NodeUpgradeInteractionComponent.generated.h"
 
+class AActor;
 class AFGCharacterPlayer;
+class APlayerController;
 class UInputAction;
 class UInputComponent;
 class UNodeUpgradeMenuWidget;
+struct FKey;
+struct FKeyEvent;
 
 /**
  * Added at runtime to the locally controlled player character. Listens to the mod key and opens the menu.
@@ -29,6 +33,19 @@ public:
 
 	/** Called by the menu when it closes, whoever closed it. */
 	void NotifyMenuClosed(UNodeUpgradeMenuWidget* Menu);
+
+	/** Bound to the character's mOnBestUseableActorUpdated (FNodeUpgradeGameAccess): updates the hint line under the game's prompt. */
+	UFUNCTION()
+	void HandleBestUsableActorUpdated(bool bIsValid, AActor* BestUsableActor);
+
+	/** Current key of the menu action, player rebinding included, and its modifier keys. False if none is found. */
+	static bool GetMenuKey(APlayerController* PlayerController, FKey& OutKey, TArray<FKey>& OutModifiers);
+
+	/** That key written the way the game writes its own keys (e.g. "Y"), or an empty text if none is found. */
+	static FText GetMenuKeyName(APlayerController* PlayerController);
+
+	/** True if this key press is the menu key with its modifiers. Used by the open menu, which receives the keys itself. */
+	static bool IsMenuKeyEvent(APlayerController* PlayerController, const FKeyEvent& KeyEvent);
 
 private:
 	void BindInput(UInputComponent* InputComponent);

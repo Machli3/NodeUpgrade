@@ -363,6 +363,18 @@ void UNodeUpgradeMenuWidget::NativeDestruct()
 	NotifyOwnerClosed();
 }
 
+FReply UNodeUpgradeMenuWidget::NativeOnPreviewKeyDown(const FGeometry& InGeometry, const FKeyEvent& InKeyEvent)
+{
+	// While the menu is open the game keeps the keyboard for its interface, so the menu key never reaches the input action:
+	// the menu checks the key itself. Preview: seen before any child widget can take the key.
+	if (!bClosing && UNodeUpgradeInteractionComponent::IsMenuKeyEvent(mPlayerController.Get(), InKeyEvent))
+	{
+		CloseMenu();
+		return FReply::Handled();
+	}
+	return Super::NativeOnPreviewKeyDown(InGeometry, InKeyEvent);
+}
+
 void UNodeUpgradeMenuWidget::NotifyOwnerClosed()
 {
 	if (UNodeUpgradeInteractionComponent* Owner = mOwnerComponent.Get())

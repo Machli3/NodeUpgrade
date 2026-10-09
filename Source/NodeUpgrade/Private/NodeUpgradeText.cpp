@@ -96,6 +96,20 @@ namespace NodeUpgradeText
 	FText MaxPurity() { return LOCTEXT("err.max_purity", "This node is already at maximum purity"); }
 	FText BasePurity() { return LOCTEXT("err.base_purity", "This node cannot go below its original purity"); }
 
+	void LookAtHintParts(FText& OutBefore, FText& OutAfter)
+	{
+		const FString Pattern = LOCTEXT("hint.open", "Press {Key} to upgrade this node").ToString();
+		FString Before;
+		FString After;
+		if (!Pattern.Split(TEXT("{Key}"), &Before, &After))
+		{
+			Before = Pattern;
+		}
+		// Parts of the already translated text: nothing left to translate.
+		OutBefore = FText::AsCultureInvariant(Before);
+		OutAfter = FText::AsCultureInvariant(After);
+	}
+
 	FText InputOpenMenu() { return LOCTEXT("input.open_menu", "Open node upgrade menu"); }
 	FText InputOpenMenuDescription() { return LOCTEXT("input.open_menu.description", "Opens the upgrade menu of the resource node you are looking at."); }
 	FText InputCategory() { return Title(); }

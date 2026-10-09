@@ -43,6 +43,12 @@ namespace NodeUpgradeText
 	FText MaxPurity();
 	FText BasePurity();
 
+	/**
+	 * Line shown under the game's look-at prompt: "Press {Key} to upgrade this node", cut around {Key} because the prompt
+	 * draws the key in its own box between two texts. Either part can be empty (e.g. Japanese starts with the key).
+	 */
+	void LookAtHintParts(FText& OutBefore, FText& OutAfter);
+
 	/** Controls menu: name and description of the key action, and name of the key category (texts of the input assets). */
 	FText InputOpenMenu();
 	FText InputOpenMenuDescription();
