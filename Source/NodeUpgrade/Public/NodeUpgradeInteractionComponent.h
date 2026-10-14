@@ -2,10 +2,12 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "NodeUpgradeTypes.h"
 #include "NodeUpgradeInteractionComponent.generated.h"
 
 class AActor;
 class AFGCharacterPlayer;
+class AFGResourceNode;
 class APlayerController;
 class UInputAction;
 class UInputComponent;
@@ -33,6 +35,9 @@ public:
 
 	/** Called by the menu when it closes, whoever closed it. */
 	void NotifyMenuClosed(UNodeUpgradeMenuWidget* Menu);
+
+	/** Multiplayer client: the host's answer to a request of the open menu (UNodeUpgradeRemoteCallObject). */
+	void HandleRemoteResult(AFGResourceNode* Node, bool bUpgrade, ENodeUpgradeResult Result, EResourcePurity NewPurity);
 
 	/** Bound to the character's mOnBestUseableActorUpdated (FNodeUpgradeGameAccess): updates the hint line under the game's prompt. */
 	UFUNCTION()

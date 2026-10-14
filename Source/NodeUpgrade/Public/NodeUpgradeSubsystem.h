@@ -45,11 +45,14 @@ struct FNodeUpgradePreview
 	bool bRefundFits = false;
 };
 
+DECLARE_MULTICAST_DELEGATE(FOnNodeUpgradeStateChanged);
+
 /**
  * World subsystem holding the state of modified nodes and all upgrade rules.
  * Spawned by SML from UNodeUpgradeGameWorldModule, saved with the game (IFGSaveInterface).
  * Never ticks: it only works on purchase / downgrade / debug command, and once after loading for modified nodes only.
- * All purchase logic is server-side (HasAuthority) so a multiplayer RPC can call it later without changes.
+ * Multiplayer (hosted game): spawned on the host and replicated. All purchase logic runs on the host (HasAuthority);
+ * clients send their requests through UNodeUpgradeRemoteCallObject and receive the records and the host's cost table.
  */
 UCLASS()
 class NODEUPGRADE_API ANodeUpgradeSubsystem : public AModSubsystem, public IFGSaveInterface
@@ -71,8 +74,19 @@ public:
 	virtual bool ShouldSave_Implementation() const override;
 	// End IFGSaveInterface
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 	/** Everything the menu displays. Does not modify anything. */
 	FNodeUpgradePreview BuildPreview(AFGResourceNode* Node, AFGCharacterPlayer* Character);
+
+	/**
+	 * Host side entry point of the menu (local host and remote players alike): refused with OutOfDate if the node's purity
+	 * is no longer the one the player saw, then TryUpgrade / TryDowngrade with that player's own character.
+	 */
+	ENodeUpgradeResult HandleRequest(AFGResourceNode* Node, AFGCharacterPlayer* Character, bool bUpgrade, EResourcePurity SeenPurity);
+
+	/** Fired on every machine when the records or the cost table change (purchase, downgrade, reload, data received from the host). */
+	FOnNodeUpgradeStateChanged OnStateChanged;
 
 	/**
 	 * Pays the next tier from the player's inventory and raises the purity by one step.
@@ -119,10 +133,28 @@ private:
 	void LoadCostTable();
 	void ValidateCostItemClasses();
 	void ReapplyStoredPurities();
+	/** Broadcasts OnStateChanged and refreshes the local player's look-at hint. */
+	void NotifyStateChanged();
 
-	/** Modified nodes only. */
-	UPROPERTY(SaveGame)
+	/** Client: applies the received purities locally (nodes are dormant actors) and refreshes the extractors shown on this machine. */
+	UFUNCTION()
+	void OnRep_Records();
+
+	/** Client: the host's cost table replaces the local costs.json. */
+	UFUNCTION()
+	void OnRep_CostTable();
+
+	/** Modified nodes only. Replicated to clients (menu preview, refunds, hint). */
+	UPROPERTY(SaveGame, ReplicatedUsing = OnRep_Records)
 	TArray<FNodeUpgradeRecord> mRecords;
+
+	/** Client: the records as last received, to find the nodes a new replication changed or released. */
+	UPROPERTY(Transient)
+	TArray<FNodeUpgradeRecord> mPreviousRecords;
+
+	/** Host: copy of mCostTable sent to clients. */
+	UPROPERTY(ReplicatedUsing = OnRep_CostTable)
+	FNodeUpgradeNetCostTable mNetCostTable;
 
 	/** Version of the saved data layout, for future migrations. */
 	UPROPERTY(SaveGame)

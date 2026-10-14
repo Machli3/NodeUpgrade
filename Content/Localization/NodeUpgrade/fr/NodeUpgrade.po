@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NodeUpgrade\n"
-"POT-Creation-Date: 2026-10-09 13:09\n"
-"PO-Revision-Date: 2026-10-09 13:09\n"
+"POT-Creation-Date: 2026-10-14 17:28\n"
+"PO-Revision-Date: 2026-10-14 17:28\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -229,9 +229,16 @@ msgctxt "NodeUpgrade,err.config"
 msgid "No valid upgrade cost is defined for this node"
 msgstr "Aucun coût d'amélioration valide n'est défini pour ce nœud"
 
+#. Key:	err.out_of_date
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(135)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(135)
+msgctxt "NodeUpgrade,err.out_of_date"
+msgid "This node has just changed: check its new state and try again"
+msgstr "Ce nœud vient de changer : vérifiez son nouvel état et réessayez"
+
 #. Key:	err.unsupported
-#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(137)
-#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(137)
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(139)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(139)
 msgctxt "NodeUpgrade,err.unsupported"
 msgid "This node cannot be upgraded"
 msgstr "Ce nœud ne peut pas être amélioré"

@@ -231,6 +231,50 @@ bool FNodeUpgradeCostTable::LoadFromFile(const FString& FilePath, TArray<FString
 	return true;
 }
 
+FNodeUpgradeNetCostTable FNodeUpgradeCostTable::ToNet() const
+{
+	FNodeUpgradeNetCostTable NetTable;
+	NetTable.RefundRatio = RefundRatio;
+	NetTable.bLoaded = bLoaded;
+	for (const FNodeUpgradeCostEntry& Entry : Entries)
+	{
+		FNodeUpgradeNetCostEntry& NetEntry = NetTable.Entries.AddDefaulted_GetRef();
+		NetEntry.Kind = Entry.Kind;
+		NetEntry.ResourceClassName = Entry.ResourceClassName;
+		for (int32 Tier = 0; Tier < NodeUpgradeTier::Count; ++Tier)
+		{
+			TArray<FNodeUpgradeNetCostItem>& NetItems = Tier == 0 ? NetEntry.ImpureToNormal : NetEntry.NormalToPure;
+			for (const FNodeUpgradeCostItem& Item : Entry.Tiers[Tier])
+			{
+				NetItems.Add(FNodeUpgradeNetCostItem{ Item.ItemClassName, Item.Amount });
+			}
+		}
+	}
+	return NetTable;
+}
+
+void FNodeUpgradeCostTable::LoadFromNet(const FNodeUpgradeNetCostTable& NetTable)
+{
+	Entries.Reset();
+	for (const FNodeUpgradeNetCostEntry& NetEntry : NetTable.Entries)
+	{
+		FNodeUpgradeCostEntry& Entry = Entries.AddDefaulted_GetRef();
+		Entry.Kind = NetEntry.Kind;
+		Entry.ResourceClassName = NetEntry.ResourceClassName;
+		Entry.Id = NetEntry.ResourceClassName.IsNone() ? NodeKindToString(NetEntry.Kind) : NetEntry.ResourceClassName.ToString();
+		for (int32 Tier = 0; Tier < NodeUpgradeTier::Count; ++Tier)
+		{
+			for (const FNodeUpgradeNetCostItem& NetItem : Tier == 0 ? NetEntry.ImpureToNormal : NetEntry.NormalToPure)
+			{
+				Entry.Tiers[Tier].Add(FNodeUpgradeCostItem{ NetItem.ItemClassName, NetItem.Amount });
+			}
+		}
+	}
+	RefundRatio = NetTable.RefundRatio;
+	bLoaded = NetTable.bLoaded;
+	SourcePath = TEXT("(received from the host)");
+}
+
 const FNodeUpgradeCostEntry* FNodeUpgradeCostTable::FindEntry(ENodeUpgradeNodeKind Kind, FName ResourceClassName) const
 {
 	const FNodeUpgradeCostEntry* Wildcard = nullptr;

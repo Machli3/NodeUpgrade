@@ -19,7 +19,9 @@ enum class ENodeUpgradeResult : uint8
 	NotEnoughItems,
 	InventoryFull,
 	/** Called without authority (multiplayer client). Upgrades must run on the server. */
-	NotAuthority
+	NotAuthority,
+	/** Multiplayer: the node's purity is no longer the one the player saw (another player changed it, or a double click). Nothing is done. */
+	OutOfDate
 };
 
 /** Node categories used by costs.json ("nodeKind"). */
@@ -89,6 +91,61 @@ struct NODEUPGRADE_API FNodeUpgradeRecord
 
 	FNodeUpgradeTierPayment& GetPayment(int32 Tier) { return Tier == 0 ? PaidImpureToNormal : PaidNormalToPure; }
 	const FNodeUpgradeTierPayment& GetPayment(int32 Tier) const { return Tier == 0 ? PaidImpureToNormal : PaidNormalToPure; }
+};
+
+/** One item line of the host's cost table, as sent to multiplayer clients (class names, resolved on each machine). */
+USTRUCT()
+struct NODEUPGRADE_API FNodeUpgradeNetCostItem
+{
+	GENERATED_BODY()
+
+	FNodeUpgradeNetCostItem() = default;
+	FNodeUpgradeNetCostItem(FName InItemClassName, int32 InAmount) : ItemClassName(InItemClassName), Amount(InAmount) {}
+
+	UPROPERTY()
+	FName ItemClassName;
+
+	UPROPERTY()
+	int32 Amount = 0;
+};
+
+/** One entry of the host's cost table, as sent to multiplayer clients. */
+USTRUCT()
+struct NODEUPGRADE_API FNodeUpgradeNetCostEntry
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	ENodeUpgradeNodeKind Kind = ENodeUpgradeNodeKind::Unknown;
+
+	/** NAME_None matches any resource of this kind, like a null resourceClass in costs.json. */
+	UPROPERTY()
+	FName ResourceClassName;
+
+	UPROPERTY()
+	TArray<FNodeUpgradeNetCostItem> ImpureToNormal;
+
+	UPROPERTY()
+	TArray<FNodeUpgradeNetCostItem> NormalToPure;
+};
+
+/**
+ * The host's cost table, replicated so that every player sees and pays the host's prices,
+ * even when the host edited its costs.json.
+ */
+USTRUCT()
+struct NODEUPGRADE_API FNodeUpgradeNetCostTable
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	TArray<FNodeUpgradeNetCostEntry> Entries;
+
+	UPROPERTY()
+	float RefundRatio = 0.5f;
+
+	UPROPERTY()
+	bool bLoaded = false;
 };
 
 /**

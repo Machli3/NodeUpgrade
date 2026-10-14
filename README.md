@@ -13,6 +13,7 @@ A Satisfactory mod: pay items to raise or lower the purity of any resource node 
 - Downgrade refunds 50% of what was actually paid for that step, rounded down; a node never goes below its original purity.
 - Payment and purity change happen together or not at all.
 - Saved with the game; no tick and no scan of the map.
+- Hosted multiplayer: every player can upgrade and downgrade with their own items, at the host's prices. The host runs the rules; clients send requests through a remote call object and receive the modified nodes and the host's cost table by replication. No dedicated server yet.
 - Editable costs in `Resources/costs.json` (`/nu reload` in the chat).
 - 13 languages, following the game language.
 
@@ -21,7 +22,7 @@ A Satisfactory mod: pay items to raise or lower the purity of any resource node 
 2. Put the contents of this repository in `Mods/GameFeatures/NodeUpgrade/` of the starter project.
 3. Generate the Visual Studio project files, build **Development Editor / Win64**, then package **NodeUpgrade** with Alpakit.
 
-Built against SML 3.12 and game version CL502094 (Satisfactory 1.2). Windows only.
+Built against SML 3.12 and game version CL502094 (Satisfactory 1.2). Windows only. Multiplayer can be tested on one PC with two copies of the game, as described in the official modding docs (Testing Your Mods).
 
 | Folder | Contents |
 |---|---|

@@ -4,6 +4,7 @@
 
 class AActor;
 class AFGCharacterPlayer;
+class UWorld;
 
 /**
  * Decides the hint line "Press {Key} to upgrade this node" shown under the game's look-at prompt (UNodeUpgradeHintRowWidget).
@@ -12,8 +13,14 @@ class AFGCharacterPlayer;
 class NODEUPGRADE_API FNodeUpgradeLookAtHint
 {
 public:
-	/** Shows or hides the hint line for the actor the player now looks at (null: nothing). */
-	static void Refresh(AFGCharacterPlayer* Character, AActor* LookedAt);
+	/**
+	 * Shows or hides the hint line for the actor the player now looks at (null: nothing).
+	 * Without bForce, nothing is redone while the same actor is looked at with the same purity.
+	 */
+	static void Refresh(AFGCharacterPlayer* Character, AActor* LookedAt, bool bForce = false);
+
+	/** Forced refresh for this machine's player, for changes that are not a new looked-at actor (cost table, another player's purchase). */
+	static void RefreshLocal(UWorld* World);
 
 	/**
 	 * Key to show for this actor (a node, or an extractor / geothermal generator built on one), or an empty text when

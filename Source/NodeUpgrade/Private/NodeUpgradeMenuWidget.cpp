@@ -25,12 +25,14 @@
 #include "NodeUpgrade.h"
 #include "NodeUpgradeDevLibrary.h"
 #include "NodeUpgradeInteractionComponent.h"
+#include "NodeUpgradeRemoteCallObject.h"
 #include "NodeUpgradeSubsystem.h"
 #include "NodeUpgradeText.h"
 #include "Resources/FGItemDescriptor.h"
 #include "Resources/FGResourceDescriptor.h"
 #include "Resources/FGResourceNode.h"
 #include "Styling/CoreStyle.h"
+#include "TimerManager.h"
 #include "UI/FGGameUI.h"
 #include "UObject/UnrealType.h"
 
@@ -277,6 +279,12 @@ UNodeUpgradeMenuWidget* UNodeUpgradeMenuWidget::Open(AFGPlayerController* Player
 	Menu->mCharacter = Character;
 	Menu->mPlayerController = PlayerController;
 	Menu->mOwnerComponent = OwnerComponent;
+	// Multiplayer: another player's purchase or the host's data can change what the menu shows while it is open.
+	if (ANodeUpgradeSubsystem* Subsystem = ANodeUpgradeSubsystem::Get(PlayerController))
+	{
+		Menu->mSubsystem = Subsystem;
+		Menu->mStateChangedHandle = Subsystem->OnStateChanged.AddUObject(Menu, &UNodeUpgradeMenuWidget::HandleStateChanged);
+	}
 	Menu->Refresh();
 
 	if (UFGGameUI* GameUI = PlayerController->GetGameUI())
@@ -324,6 +332,7 @@ void UNodeUpgradeMenuWidget::CloseMenu()
 		PlayerController->SetInputMode(FInputModeGameOnly());
 		PlayerController->SetShowMouseCursor(false);
 	}
+	UnbindStateChanged();
 	NotifyOwnerClosed();
 }
 
@@ -360,6 +369,7 @@ void UNodeUpgradeMenuWidget::NativeDestruct()
 {
 	Super::NativeDestruct();
 	// Also covers the game closing the menu by itself (death, another window...).
+	UnbindStateChanged();
 	NotifyOwnerClosed();
 }
 
@@ -469,8 +479,8 @@ void UNodeUpgradeMenuWidget::Refresh()
 
 	// Buttons stay clickable when items or space are missing: the click then shows the localized reason and changes nothing.
 	// Enabled state first: the game's button makes itself visible again when disabled, so visibility is set last.
-	SetButtonEnabled(mUpgradeButton, bShowUpgrade && Preview.bUpgradeCostResolved, true);
-	SetButtonEnabled(mDowngradeButton, bShowRefund, false);
+	SetButtonEnabled(mUpgradeButton, !bWaitingForHost && bShowUpgrade && Preview.bUpgradeCostResolved, true);
+	SetButtonEnabled(mDowngradeButton, !bWaitingForHost && bShowRefund, false);
 	mUpgradeButton->SetVisibility(bShowUpgrade ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 	mDowngradeButton->SetVisibility(bShowRefund ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 
@@ -531,22 +541,15 @@ void UNodeUpgradeMenuWidget::AddRefundRow(TSubclassOf<UFGItemDescriptor> ItemCla
 
 void UNodeUpgradeMenuWidget::HandleUpgradeClicked()
 {
-	ANodeUpgradeSubsystem* Subsystem = ANodeUpgradeSubsystem::Get(this);
-	AFGResourceNode* Node = mNode.Get();
-	AFGCharacterPlayer* Character = mCharacter.Get();
-	if (Subsystem == nullptr || Node == nullptr || Character == nullptr)
-	{
-		CloseMenu();
-		return;
-	}
-
-	const ENodeUpgradeResult Result = Subsystem->TryUpgrade(Node, Character);
-	mStatusText = NodeUpgradeText::ResultMessage(Result, true, Node->GetResourcePurity());
-	bStatusIsError = Result != ENodeUpgradeResult::Success;
-	Refresh();
+	RequestChange(true);
 }
 
 void UNodeUpgradeMenuWidget::HandleDowngradeClicked()
+{
+	RequestChange(false);
+}
+
+void UNodeUpgradeMenuWidget::RequestChange(bool bUpgrade)
 {
 	ANodeUpgradeSubsystem* Subsystem = ANodeUpgradeSubsystem::Get(this);
 	AFGResourceNode* Node = mNode.Get();
@@ -556,11 +559,75 @@ void UNodeUpgradeMenuWidget::HandleDowngradeClicked()
 		CloseMenu();
 		return;
 	}
+	if (bWaitingForHost)
+	{
+		return;
+	}
 
-	const ENodeUpgradeResult Result = Subsystem->TryDowngrade(Node, Character);
-	mStatusText = NodeUpgradeText::ResultMessage(Result, false, Node->GetResourcePurity());
+	// The purity this player decided on: the host refuses the request if the node changed in the meantime.
+	const EResourcePurity Seen = Node->GetResourcePurity();
+	if (Subsystem->HasAuthority())
+	{
+		// Single player or host: the rules run right here.
+		const ENodeUpgradeResult Result = Subsystem->HandleRequest(Node, Character, bUpgrade, Seen);
+		ShowResult(Node, bUpgrade, Result, Node->GetResourcePurity());
+		return;
+	}
+
+	AFGPlayerController* PlayerController = mPlayerController.Get();
+	UNodeUpgradeRemoteCallObject* RemoteCall = PlayerController != nullptr ? PlayerController->GetRemoteCallObjectOfClass<UNodeUpgradeRemoteCallObject>() : nullptr;
+	if (RemoteCall == nullptr)
+	{
+		UE_LOG(LogNodeUpgrade, Warning, TEXT("No NodeUpgrade remote call object on this client: the request cannot reach the host"));
+		ShowResult(Node, bUpgrade, ENodeUpgradeResult::NotAuthority, Seen);
+		return;
+	}
+	bWaitingForHost = true;
+	mStatusText = FText::GetEmpty();
+	Refresh();
+	RemoteCall->Server_RequestChange(Node, bUpgrade, static_cast<uint8>(Seen));
+}
+
+void UNodeUpgradeMenuWidget::ShowResult(AFGResourceNode* Node, bool bUpgrade, ENodeUpgradeResult Result, EResourcePurity NewPurity)
+{
+	bWaitingForHost = false;
+	if (bClosing || Node != mNode.Get())
+	{
+		return;
+	}
+	mStatusText = NodeUpgradeText::ResultMessage(Result, bUpgrade, NewPurity);
 	bStatusIsError = Result != ENodeUpgradeResult::Success;
 	Refresh();
+
+	// Multiplayer client: the answer can arrive before the replicated inventory and records, which refresh the menu again
+	// when they land (HandleStateChanged); the inventory has no such event, hence one late refresh.
+	const ANodeUpgradeSubsystem* Subsystem = mSubsystem.Get();
+	if (Subsystem != nullptr && !Subsystem->HasAuthority() && GetWorld() != nullptr)
+	{
+		GetWorld()->GetTimerManager().SetTimer(mLateRefreshTimer, this, &UNodeUpgradeMenuWidget::Refresh, 0.5f, false);
+	}
+}
+
+void UNodeUpgradeMenuWidget::HandleStateChanged()
+{
+	if (!bClosing)
+	{
+		Refresh();
+	}
+}
+
+void UNodeUpgradeMenuWidget::UnbindStateChanged()
+{
+	if (ANodeUpgradeSubsystem* Subsystem = mSubsystem.Get())
+	{
+		Subsystem->OnStateChanged.Remove(mStateChangedHandle);
+	}
+	mStateChangedHandle.Reset();
+	mSubsystem.Reset();
+	if (UWorld* World = GetWorld())
+	{
+		World->GetTimerManager().ClearTimer(mLateRefreshTimer);
+	}
 }
 
 void UNodeUpgradeMenuWidget::HandleCloseClicked()

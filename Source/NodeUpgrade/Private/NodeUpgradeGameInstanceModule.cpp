@@ -1,6 +1,7 @@
 #include "NodeUpgradeGameInstanceModule.h"
 
 #include "NodeUpgradeHintRowWidget.h"
+#include "NodeUpgradeRemoteCallObject.h"
 #include "Patching/WidgetBlueprintHookManager.h"
 
 namespace
@@ -28,4 +29,7 @@ UNodeUpgradeGameInstanceModule::UNodeUpgradeGameInstanceModule()
 	// and SML 3.12's UWidgetBlueprintHookSlot_Generic crashes on a vertical box slot (it calls SetSize on a null horizontal box slot).
 	// The gap above the line is inside UNodeUpgradeHintRowWidget.
 	WidgetBlueprintHooks.Add(HintLineHook);
+
+	// Hosted multiplayer: clients send their upgrade / downgrade requests to the host through this object.
+	RemoteCallObjects.Add(UNodeUpgradeRemoteCallObject::StaticClass());
 }

@@ -1,5 +1,6 @@
 #include "NodeUpgradeLookAtHint.h"
 
+#include "Engine/World.h"
 #include "FGCharacterPlayer.h"
 #include "FGPlayerController.h"
 #include "NodeUpgrade.h"
@@ -9,7 +10,7 @@
 #include "NodeUpgradeTargeting.h"
 #include "Resources/FGResourceNode.h"
 
-void FNodeUpgradeLookAtHint::Refresh(AFGCharacterPlayer* Character, AActor* LookedAt)
+void FNodeUpgradeLookAtHint::Refresh(AFGCharacterPlayer* Character, AActor* LookedAt, bool bForce)
 {
 	// Nothing to redo while the same actor is looked at with the same purity, however often the game sends its event.
 	static TWeakObjectPtr<AActor> LastLookedAt;
@@ -17,7 +18,7 @@ void FNodeUpgradeLookAtHint::Refresh(AFGCharacterPlayer* Character, AActor* Look
 	static bool bHasLast = false;
 	const AFGResourceNode* Node = FNodeUpgradeTargeting::ResolveNode(LookedAt);
 	const EResourcePurity Purity = Node != nullptr ? Node->GetResourcePurity() : RP_MAX;
-	if (bHasLast && LastLookedAt.Get() == LookedAt && LastPurity == Purity)
+	if (!bForce && bHasLast && LastLookedAt.Get() == LookedAt && LastPurity == Purity)
 	{
 		return;
 	}
@@ -25,6 +26,25 @@ void FNodeUpgradeLookAtHint::Refresh(AFGCharacterPlayer* Character, AActor* Look
 	LastLookedAt = LookedAt;
 	LastPurity = Purity;
 	UNodeUpgradeHintRowWidget::SetHintKey(GetHintKey(Character, LookedAt));
+}
+
+void FNodeUpgradeLookAtHint::RefreshLocal(UWorld* World)
+{
+	if (World == nullptr)
+	{
+		return;
+	}
+	for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+	{
+		APlayerController* PlayerController = It->Get();
+		if (PlayerController != nullptr && PlayerController->IsLocalController())
+		{
+			if (AFGCharacterPlayer* Character = Cast<AFGCharacterPlayer>(PlayerController->GetPawn()))
+			{
+				Refresh(Character, Character->GetBestUsableActor(), /*bForce*/ true);
+			}
+		}
+	}
 }
 
 FText FNodeUpgradeLookAtHint::GetHintKey(AFGCharacterPlayer* Character, AActor* LookedAt)

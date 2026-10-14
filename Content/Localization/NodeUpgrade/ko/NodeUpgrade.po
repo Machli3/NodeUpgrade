@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NodeUpgrade\n"
-"POT-Creation-Date: 2026-10-09 13:09\n"
-"PO-Revision-Date: 2026-10-09 13:09\n"
+"POT-Creation-Date: 2026-10-14 17:28\n"
+"PO-Revision-Date: 2026-10-14 17:28\n"
 "Language-Team: \n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -229,9 +229,16 @@ msgctxt "NodeUpgrade,err.config"
 msgid "No valid upgrade cost is defined for this node"
 msgstr "이 노드에는 유효한 강화 비용이 설정되어 있지 않습니다"
 
+#. Key:	err.out_of_date
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(135)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(135)
+msgctxt "NodeUpgrade,err.out_of_date"
+msgid "This node has just changed: check its new state and try again"
+msgstr "이 노드가 방금 변경되었습니다. 새 상태를 확인하고 다시 시도하세요"
+
 #. Key:	err.unsupported
-#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(137)
-#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(137)
+#. SourceLocation:	Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(139)
+#: Mods/GameFeatures/NodeUpgrade/Source/NodeUpgrade/Private/NodeUpgradeText.cpp(139)
 msgctxt "NodeUpgrade,err.unsupported"
 msgid "This node cannot be upgraded"
 msgstr "이 노드는 강화할 수 없습니다"

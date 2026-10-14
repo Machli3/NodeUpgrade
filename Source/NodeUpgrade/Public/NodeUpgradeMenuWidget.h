@@ -1,13 +1,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/TimerHandle.h"
 #include "Fonts/SlateFontInfo.h"
+#include "NodeUpgradeTypes.h"
 #include "UI/FGInteractWidget.h"
 #include "NodeUpgradeMenuWidget.generated.h"
 
 class AFGCharacterPlayer;
 class AFGPlayerController;
 class AFGResourceNode;
+class ANodeUpgradeSubsystem;
 class UFont;
 class UImage;
 class UTextBlock;
@@ -57,6 +60,9 @@ public:
 	/** Re-reads the node, inventory and records and updates every line. */
 	void Refresh();
 
+	/** Shows the outcome of an upgrade / downgrade (run here, or by the host for a multiplayer client) and updates the menu. */
+	void ShowResult(AFGResourceNode* Node, bool bUpgrade, ENodeUpgradeResult Result, EResourcePurity NewPurity);
+
 	// Begin UFGInteractWidget interface
 	virtual void OnEscapePressed_Implementation() override;
 	// End UFGInteractWidget interface
@@ -88,6 +94,13 @@ private:
 	void AddRefundRow(TSubclassOf<class UFGItemDescriptor> ItemClass, int32 Amount);
 	void NotifyOwnerClosed();
 
+	/** Upgrade / downgrade button: runs the rules here (single player, host) or sends the request to the host (multiplayer client). */
+	void RequestChange(bool bUpgrade);
+
+	/** The subsystem's records or prices changed (this player, another player, data received from the host). */
+	void HandleStateChanged();
+	void UnbindStateChanged();
+
 	UFUNCTION()
 	void HandleUpgradeClicked();
 
@@ -104,6 +117,14 @@ private:
 
 	bool bPushedToGameUI = false;
 	bool bClosing = false;
+
+	/** Multiplayer client: a request is on its way to the host. The buttons stay disabled until the answer, so a second click cannot pay twice. */
+	bool bWaitingForHost = false;
+
+	TWeakObjectPtr<ANodeUpgradeSubsystem> mSubsystem;
+	FDelegateHandle mStateChangedHandle;
+	/** Multiplayer client: one more refresh shortly after the host's answer, once the inventory has been replicated too. */
+	FTimerHandle mLateRefreshTimer;
 
 	FText mStatusText;
 	bool bStatusIsError = false;

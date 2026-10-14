@@ -34,6 +34,12 @@ public:
 	 */
 	bool LoadFromFile(const FString& FilePath, TArray<FString>& OutErrors, TArray<FString>& OutWarnings);
 
+	/** Multiplayer: the table as sent by the host to its clients. */
+	FNodeUpgradeNetCostTable ToNet() const;
+
+	/** Multiplayer client: replaces the content with the host's table (the local costs.json is not used). */
+	void LoadFromNet(const FNodeUpgradeNetCostTable& NetTable);
+
 	/** Exact resource class match first, then the wildcard entry (resourceClass null) of the same kind. */
 	const FNodeUpgradeCostEntry* FindEntry(ENodeUpgradeNodeKind Kind, FName ResourceClassName) const;
 

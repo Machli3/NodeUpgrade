@@ -131,6 +131,8 @@ namespace NodeUpgradeText
 			return BasePurity();
 		case ENodeUpgradeResult::ConfigError:
 			return LOCTEXT("err.config", "No valid upgrade cost is defined for this node");
+		case ENodeUpgradeResult::OutOfDate:
+			return LOCTEXT("err.out_of_date", "This node has just changed: check its new state and try again");
 		case ENodeUpgradeResult::InvalidTarget:
 		case ENodeUpgradeResult::NotAuthority:
 		default:

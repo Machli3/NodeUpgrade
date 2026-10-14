@@ -187,6 +187,14 @@ void UNodeUpgradeInteractionComponent::NotifyMenuClosed(UNodeUpgradeMenuWidget* 
 	}
 }
 
+void UNodeUpgradeInteractionComponent::HandleRemoteResult(AFGResourceNode* Node, bool bUpgrade, ENodeUpgradeResult Result, EResourcePurity NewPurity)
+{
+	if (mOpenMenu != nullptr && !mOpenMenu->IsClosing())
+	{
+		mOpenMenu->ShowResult(Node, bUpgrade, Result, NewPurity);
+	}
+}
+
 void UNodeUpgradeInteractionComponent::HandleBestUsableActorUpdated(bool bIsValid, AActor* BestUsableActor)
 {
 	FNodeUpgradeLookAtHint::Refresh(Cast<AFGCharacterPlayer>(GetOwner()), bIsValid ? BestUsableActor : nullptr);

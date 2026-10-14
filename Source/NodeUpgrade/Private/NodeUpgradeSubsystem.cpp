@@ -16,12 +16,23 @@
 #include "Resources/FGResourceNodeFrackingCore.h"
 #include "Resources/FGResourceNodeFrackingSatellite.h"
 #include "Subsystem/SubsystemActorManager.h"
+#include "NodeUpgradeLookAtHint.h"
+#include "Net/UnrealNetwork.h"
 #include "TimerManager.h"
 
 ANodeUpgradeSubsystem::ANodeUpgradeSubsystem()
 {
 	PrimaryActorTick.bCanEverTick = false;
-	ReplicationPolicy = ESubsystemReplicationPolicy::SpawnOnServer;
+	// Hosted multiplayer: every client needs the records and the host's prices, wherever the player stands.
+	ReplicationPolicy = ESubsystemReplicationPolicy::SpawnOnServer_Replicate;
+	bAlwaysRelevant = true;
+}
+
+void ANodeUpgradeSubsystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ANodeUpgradeSubsystem, mRecords);
+	DOREPLIFETIME(ANodeUpgradeSubsystem, mNetCostTable);
 }
 
 ANodeUpgradeSubsystem* ANodeUpgradeSubsystem::Get(const UObject* WorldContext)
@@ -44,7 +55,15 @@ ANodeUpgradeSubsystem* ANodeUpgradeSubsystem::Get(const UObject* WorldContext)
 void ANodeUpgradeSubsystem::Init()
 {
 	Super::Init();
-	LoadCostTable();
+	if (HasAuthority())
+	{
+		LoadCostTable();
+	}
+	else if (!mCostTable.IsLoaded())
+	{
+		// Multiplayer client: the host's table arrives by replication (OnRep_CostTable, possibly before Init); costs.json is not used.
+		UE_LOG(LogNodeUpgrade, Display, TEXT("Multiplayer client: waiting for the host's cost table"));
+	}
 }
 
 void ANodeUpgradeSubsystem::BeginPlay()
@@ -52,7 +71,72 @@ void ANodeUpgradeSubsystem::BeginPlay()
 	Super::BeginPlay();
 
 	// One-shot, next frame: every actor (including the node randomization manager) has run BeginPlay by then.
-	GetWorldTimerManager().SetTimerForNextTick(this, &ANodeUpgradeSubsystem::ReapplyStoredPurities);
+	// Host only: clients get the purities from the host (OnRep_Records).
+	if (HasAuthority())
+	{
+		GetWorldTimerManager().SetTimerForNextTick(this, &ANodeUpgradeSubsystem::ReapplyStoredPurities);
+	}
+}
+
+void ANodeUpgradeSubsystem::NotifyStateChanged()
+{
+	OnStateChanged.Broadcast();
+	FNodeUpgradeLookAtHint::RefreshLocal(GetWorld());
+}
+
+void ANodeUpgradeSubsystem::OnRep_Records()
+{
+	TSet<AFGResourceNode*> ChangedNodes;
+	for (const FNodeUpgradeRecord& Record : mRecords)
+	{
+		AFGResourceNode* Node = Record.Node;
+		const EResourcePurity Purity = Record.CurrentPurity.GetValue();
+		if (!IsValid(Node) || !NodeUpgradeTier::IsValidPurity(Purity))
+		{
+			continue;
+		}
+		// Nodes are dormant actors: their own replicated purity may arrive later than the records.
+		if (Node->GetResourcePurity() != Purity)
+		{
+			Node->SetResourcePurityOverride(Purity);
+		}
+		const FNodeUpgradeRecord* Previous = mPreviousRecords.FindByPredicate([Node](const FNodeUpgradeRecord& Other) { return Other.Node.Get() == Node; });
+		if (Previous == nullptr || Previous->CurrentPurity != Record.CurrentPurity)
+		{
+			ChangedNodes.Add(Node);
+		}
+	}
+	for (const FNodeUpgradeRecord& Previous : mPreviousRecords)
+	{
+		AFGResourceNode* Node = Previous.Node;
+		if (!IsValid(Node) || FindRecord(Node) != nullptr)
+		{
+			continue;
+		}
+		// The host dropped the record: the node went back to its original purity.
+		const EResourcePurity Original = Previous.OriginalPurity.GetValue();
+		if (NodeUpgradeTier::IsValidPurity(Original) && Node->GetResourcePurity() != Original)
+		{
+			Node->SetResourcePurityOverride(Original);
+		}
+		ChangedNodes.Add(Node);
+	}
+	mPreviousRecords = mRecords;
+
+	// The extractors' cached rates shown on this machine (only the nodes that changed, once per replication).
+	RefreshDependentBuildings(GetWorld(), ChangedNodes);
+	UE_LOG(LogNodeUpgrade, Display, TEXT("Received %d modified node records from the host (%d nodes changed)"), mRecords.Num(), ChangedNodes.Num());
+	NotifyStateChanged();
+}
+
+void ANodeUpgradeSubsystem::OnRep_CostTable()
+{
+	mCostTable.LoadFromNet(mNetCostTable);
+	mResolvedItemClasses.Reset();
+	mReportedUnresolvedClasses.Reset();
+	UE_LOG(LogNodeUpgrade, Display, TEXT("Received %d cost entries from the host (refund ratio %.2f)"), mCostTable.GetEntries().Num(), mCostTable.GetRefundRatio());
+	ValidateCostItemClasses();
+	NotifyStateChanged();
 }
 
 void ANodeUpgradeSubsystem::PreSaveGame_Implementation(int32 saveVersion, int32 gameVersion) {}
@@ -152,6 +236,14 @@ bool ANodeUpgradeSubsystem::ReloadCostTable(TArray<FString>& OutErrors, TArray<F
 	// Item names may have changed: resolve again on next use.
 	mResolvedItemClasses.Reset();
 	mReportedUnresolvedClasses.Reset();
+
+	// Multiplayer: clients use the host's prices (OnRep_CostTable).
+	if (HasAuthority())
+	{
+		mNetCostTable = mCostTable.ToNet();
+		ForceNetUpdate();
+	}
+	NotifyStateChanged();
 	return bLoaded;
 }
 
@@ -444,7 +536,9 @@ ENodeUpgradeResult ANodeUpgradeSubsystem::TryUpgrade(AFGResourceNode* Node, AFGC
 
 	ApplyPurity(Node, NewPurity);
 
-	UE_LOG(LogNodeUpgrade, Display, TEXT("Upgraded %s: %d -> %d"), *Node->GetName(), static_cast<int32>(Current), static_cast<int32>(NewPurity));
+	UE_LOG(LogNodeUpgrade, Display, TEXT("Upgraded %s: %d -> %d (by %s)"), *Node->GetName(), static_cast<int32>(Current), static_cast<int32>(NewPurity), *Character->GetName());
+	ForceNetUpdate();
+	NotifyStateChanged();
 	return ENodeUpgradeResult::Success;
 }
 
@@ -500,8 +594,29 @@ ENodeUpgradeResult ANodeUpgradeSubsystem::TryDowngrade(AFGResourceNode* Node, AF
 		mRecords.RemoveAt(RecordIndex);
 	}
 
-	UE_LOG(LogNodeUpgrade, Display, TEXT("Downgraded %s: %d -> %d (%d refund stacks)"), *Node->GetName(), static_cast<int32>(Current), static_cast<int32>(NewPurity), Stacks.Num());
+	UE_LOG(LogNodeUpgrade, Display, TEXT("Downgraded %s: %d -> %d (%d refund stacks, by %s)"), *Node->GetName(), static_cast<int32>(Current), static_cast<int32>(NewPurity), Stacks.Num(), *Character->GetName());
+	ForceNetUpdate();
+	NotifyStateChanged();
 	return ENodeUpgradeResult::Success;
+}
+
+ENodeUpgradeResult ANodeUpgradeSubsystem::HandleRequest(AFGResourceNode* Node, AFGCharacterPlayer* Character, bool bUpgrade, EResourcePurity SeenPurity)
+{
+	if (!HasAuthority())
+	{
+		return ENodeUpgradeResult::NotAuthority;
+	}
+	if (!FNodeUpgradeTargeting::IsSupportedNode(Node))
+	{
+		return ENodeUpgradeResult::InvalidTarget;
+	}
+	// The player decided on what the menu showed: if the node changed since (another player, a second click
+	// before the first answer), nothing is done, and the menu shows the new state.
+	if (Node->GetResourcePurity() != SeenPurity)
+	{
+		return ENodeUpgradeResult::OutOfDate;
+	}
+	return bUpgrade ? TryUpgrade(Node, Character) : TryDowngrade(Node, Character);
 }
 
 void ANodeUpgradeSubsystem::ApplyPurity(AFGResourceNode* Node, EResourcePurity Purity)
@@ -562,7 +677,8 @@ void ANodeUpgradeSubsystem::RefreshDependentBuildings(UWorld* World, const TSet<
 	}
 
 	int32 RefreshedGenerators = 0;
-	if (bHasGeyser)
+	// Power is produced and computed on the host only: a multiplayer client leaves the game's generator code alone.
+	if (bHasGeyser && World->GetNetMode() != NM_Client)
 	{
 		for (TActorIterator<AFGBuildableGeneratorGeoThermal> It(World); It; ++It)
 		{
