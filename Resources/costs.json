@@ -14,8 +14,8 @@
       "nodeKind": "solid",
       "resourceClass": "Desc_OreIron_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_IronPlate_C", "name": "Iron Plate", "amount": 450 } ], "rawEquivalent": 675, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_IronPlateReinforced_C", "name": "Reinforced Iron Plate", "amount": 150 } ], "rawEquivalent": 1800, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_IronPlate_C", "name": "Iron Plate", "amount": 450 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 50 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_IronPlateReinforced_C", "name": "Reinforced Iron Plate", "amount": 150 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 150 } ], "confidence": "high" }
       }
     },
     {
@@ -23,8 +23,8 @@
       "nodeKind": "solid",
       "resourceClass": "Desc_OreCopper_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_CopperSheet_C", "name": "Copper Sheet", "amount": 340 } ], "rawEquivalent": 680, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_CopperSheet_C", "name": "Copper Sheet", "amount": 900 } ], "rawEquivalent": 1800, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_CopperSheet_C", "name": "Copper Sheet", "amount": 340 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 40 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_CopperSheet_C", "name": "Copper Sheet", "amount": 900 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 120 } ], "confidence": "high" }
       }
     },
     {
@@ -32,8 +32,8 @@
       "nodeKind": "solid",
       "resourceClass": "Desc_Stone_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_Cement_C", "name": "Concrete", "amount": 225 } ], "rawEquivalent": 675, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Cement_C", "name": "Concrete", "amount": 600 } ], "rawEquivalent": 1800, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Cement_C", "name": "Concrete", "amount": 225 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 30 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Cement_C", "name": "Concrete", "amount": 600 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 90 } ], "confidence": "high" }
       }
     },
     {
@@ -41,8 +41,8 @@
       "nodeKind": "solid",
       "resourceClass": "Desc_Coal_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_SteelIngot_C", "name": "Steel Ingot", "amount": 340 } ], "rawEquivalent": 680, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_SteelPlate_C", "name": "Steel Beam", "amount": 225 } ], "rawEquivalent": 1800, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_SteelIngot_C", "name": "Steel Ingot", "amount": 340 }, { "itemClass": "Desc_SpaceElevatorPart_2_C", "name": "Versatile Framework", "amount": 100 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_SteelPlate_C", "name": "Steel Beam", "amount": 225 }, { "itemClass": "Desc_SpaceElevatorPart_2_C", "name": "Versatile Framework", "amount": 300 } ], "confidence": "high" }
       }
     },
     {
@@ -50,8 +50,8 @@
       "nodeKind": "solid",
       "resourceClass": "Desc_OreGold_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_GoldIngot_C", "name": "Caterium Ingot", "amount": 133 } ], "rawEquivalent": 400, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_HighSpeedWire_C", "name": "Quickwire", "amount": 1700 } ], "rawEquivalent": 1020, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_GoldIngot_C", "name": "Caterium Ingot", "amount": 133 }, { "itemClass": "Desc_SpaceElevatorPart_3_C", "name": "Automated Wiring", "amount": 40 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_HighSpeedWire_C", "name": "Quickwire", "amount": 1700 }, { "itemClass": "Desc_SpaceElevatorPart_3_C", "name": "Automated Wiring", "amount": 120 } ], "confidence": "high" }
       }
     },
     {
@@ -59,8 +59,8 @@
       "nodeKind": "solid",
       "resourceClass": "Desc_RawQuartz_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_Silica_C", "name": "Silica", "amount": 670 } ], "rawEquivalent": 402, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_QuartzCrystal_C", "name": "Quartz Crystal", "amount": 600 } ], "rawEquivalent": 1000, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Silica_C", "name": "Silica", "amount": 670 }, { "itemClass": "Desc_SpaceElevatorPart_5_C", "name": "Adaptive Control Unit", "amount": 15 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_QuartzCrystal_C", "name": "Quartz Crystal", "amount": 600 }, { "itemClass": "Desc_SpaceElevatorPart_5_C", "name": "Adaptive Control Unit", "amount": 45 } ], "confidence": "high" }
       }
     },
     {
@@ -68,8 +68,8 @@
       "nodeKind": "solid",
       "resourceClass": "Desc_Sulfur_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_Gunpowder_C", "name": "Black Powder", "amount": 400 } ], "rawEquivalent": 400, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_CompactedCoal_C", "name": "Compacted Coal", "amount": 500 } ], "rawEquivalent": 1000, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Gunpowder_C", "name": "Black Powder", "amount": 400 }, { "itemClass": "Desc_SpaceElevatorPart_2_C", "name": "Versatile Framework", "amount": 60 }, { "itemClass": "Desc_SpaceElevatorPart_3_C", "name": "Automated Wiring", "amount": 20 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_CompactedCoal_C", "name": "Compacted Coal", "amount": 500 }, { "itemClass": "Desc_SpaceElevatorPart_2_C", "name": "Versatile Framework", "amount": 180 }, { "itemClass": "Desc_SpaceElevatorPart_3_C", "name": "Automated Wiring", "amount": 60 } ], "confidence": "high" }
       }
     },
     {
@@ -77,8 +77,8 @@
       "nodeKind": "solid",
       "resourceClass": "Desc_OreBauxite_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_AluminumIngot_C", "name": "Aluminum Ingot", "amount": 530 } ], "rawEquivalent": 400, "confidence": "estimate" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_AluminumCasing_C", "name": "Aluminum Casing", "amount": 900 } ], "rawEquivalent": 1000, "confidence": "estimate" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_AluminumIngot_C", "name": "Aluminum Ingot", "amount": 530 }, { "itemClass": "Desc_SpaceElevatorPart_7_C", "name": "Assembly Director System", "amount": 10 }, { "itemClass": "Desc_SpaceElevatorPart_6_C", "name": "Magnetic Field Generator", "amount": 20 } ], "confidence": "estimate" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_AluminumCasing_C", "name": "Aluminum Casing", "amount": 900 }, { "itemClass": "Desc_SpaceElevatorPart_7_C", "name": "Assembly Director System", "amount": 30 }, { "itemClass": "Desc_SpaceElevatorPart_6_C", "name": "Magnetic Field Generator", "amount": 60 } ], "confidence": "estimate" }
       }
     },
     {
@@ -86,8 +86,8 @@
       "nodeKind": "solid",
       "resourceClass": "Desc_OreUranium_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_SteelPlateReinforced_C", "name": "Encased Industrial Beam", "amount": 5 } ], "rawEquivalent": 225, "confidence": "estimate" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_ElectromagneticControlRod_C", "name": "Electromagnetic Control Rod", "amount": 12 } ], "rawEquivalent": 500, "confidence": "estimate" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_SteelPlateReinforced_C", "name": "Encased Industrial Beam", "amount": 5 }, { "itemClass": "Desc_SpaceElevatorPart_11_C", "name": "Ballistic Warp Drive", "amount": 5 }, { "itemClass": "Desc_SpaceElevatorPart_12_C", "name": "AI Expansion Server", "amount": 5 } ], "confidence": "estimate" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_ElectromagneticControlRod_C", "name": "Electromagnetic Control Rod", "amount": 12 }, { "itemClass": "Desc_SpaceElevatorPart_11_C", "name": "Ballistic Warp Drive", "amount": 15 }, { "itemClass": "Desc_SpaceElevatorPart_12_C", "name": "AI Expansion Server", "amount": 15 } ], "confidence": "estimate" }
       }
     },
     {
@@ -95,8 +95,8 @@
       "nodeKind": "solid",
       "resourceClass": "Desc_SAM_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_SAMIngot_C", "name": "Reanimated SAM", "amount": 50 } ], "rawEquivalent": 200, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_SAMFluctuator_C", "name": "SAM Fluctuator", "amount": 28 } ], "rawEquivalent": 560, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_SAMIngot_C", "name": "Reanimated SAM", "amount": 50 }, { "itemClass": "Desc_SpaceElevatorPart_9_C", "name": "Nuclear Pasta", "amount": 5 }, { "itemClass": "Desc_SpaceElevatorPart_7_C", "name": "Assembly Director System", "amount": 10 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_SAMFluctuator_C", "name": "SAM Fluctuator", "amount": 28 }, { "itemClass": "Desc_SpaceElevatorPart_9_C", "name": "Nuclear Pasta", "amount": 15 }, { "itemClass": "Desc_SpaceElevatorPart_7_C", "name": "Assembly Director System", "amount": 30 } ], "confidence": "high" }
       }
     },
     {
@@ -104,8 +104,8 @@
       "nodeKind": "fluid_node",
       "resourceClass": "Desc_LiquidOil_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_Plastic_C", "name": "Plastic", "amount": 270 } ], "rawEquivalent": 405, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Rubber_C", "name": "Rubber", "amount": 670 } ], "rawEquivalent": 1005, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Plastic_C", "name": "Plastic", "amount": 270 }, { "itemClass": "Desc_SpaceElevatorPart_4_C", "name": "Modular Engine", "amount": 30 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Rubber_C", "name": "Rubber", "amount": 670 }, { "itemClass": "Desc_SpaceElevatorPart_4_C", "name": "Modular Engine", "amount": 90 } ], "confidence": "high" }
       }
     },
     {
@@ -113,8 +113,8 @@
       "nodeKind": "fracking_satellite",
       "resourceClass": "Desc_LiquidOil_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_Plastic_C", "name": "Plastic", "amount": 200 } ], "rawEquivalent": 300, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Rubber_C", "name": "Rubber", "amount": 500 } ], "rawEquivalent": 750, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Plastic_C", "name": "Plastic", "amount": 200 }, { "itemClass": "Desc_SpaceElevatorPart_4_C", "name": "Modular Engine", "amount": 20 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Rubber_C", "name": "Rubber", "amount": 500 }, { "itemClass": "Desc_SpaceElevatorPart_4_C", "name": "Modular Engine", "amount": 60 } ], "confidence": "high" }
       }
     },
     {
@@ -122,8 +122,8 @@
       "nodeKind": "fracking_satellite",
       "resourceClass": "Desc_Water_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_SteelPipe_C", "name": "Steel Pipe", "amount": 100 } ], "rawEquivalent": 300, "confidence": "high" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_SteelPlate_C", "name": "Steel Beam", "amount": 95 } ], "rawEquivalent": 760, "confidence": "high" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_SteelPipe_C", "name": "Steel Pipe", "amount": 100 }, { "itemClass": "Desc_SpaceElevatorPart_5_C", "name": "Adaptive Control Unit", "amount": 10 } ], "confidence": "high" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_SteelPlate_C", "name": "Steel Beam", "amount": 95 }, { "itemClass": "Desc_SpaceElevatorPart_5_C", "name": "Adaptive Control Unit", "amount": 30 } ], "confidence": "high" }
       }
     },
     {
@@ -131,8 +131,48 @@
       "nodeKind": "fracking_satellite",
       "resourceClass": "Desc_NitrogenGas_C",
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_AluminumCasing_C", "name": "Aluminum Casing", "amount": 270 } ], "rawEquivalent": 300, "confidence": "estimate" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_AluminumCasing_C", "name": "Aluminum Casing", "amount": 680 } ], "rawEquivalent": 750, "confidence": "estimate" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_AluminumCasing_C", "name": "Aluminum Casing", "amount": 270 }, { "itemClass": "Desc_SpaceElevatorPart_6_C", "name": "Magnetic Field Generator", "amount": 20 }, { "itemClass": "Desc_SpaceElevatorPart_8_C", "name": "Thermal Propulsion Rocket", "amount": 5 } ], "confidence": "estimate" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_AluminumCasing_C", "name": "Aluminum Casing", "amount": 680 }, { "itemClass": "Desc_SpaceElevatorPart_6_C", "name": "Magnetic Field Generator", "amount": 60 }, { "itemClass": "Desc_SpaceElevatorPart_8_C", "name": "Thermal Propulsion Rocket", "amount": 15 } ], "confidence": "estimate" }
+      }
+    },
+    {
+      "id": "ficsit_farming_dirt",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_FF_Dirt_C",
+      "_comment": "Optional Ficsit Farming resource. Descriptor and Modular Miner mapping checked in K-Mods public wiki data; confirm nodeKind in-game. Costs are provisional, not SF+ balance recommendations.",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_FF_Dirt_C", "name": "Dirt", "amount": 675 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 25 } ], "confidence": "estimate" },
+        "Normal->Pure": { "items": [ { "itemClass": "Desc_FF_Dirt_C", "name": "Dirt", "amount": 1800 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 75 } ], "confidence": "estimate" }
+      }
+    },
+    {
+      "id": "ficsit_farming_peat",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_FF_Dirt_Fertilized_C",
+      "_comment": "Optional Ficsit Farming resource. Provisional raw-resource payment; confirm nodeKind in-game.",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_FF_Dirt_Fertilized_C", "name": "Peat", "amount": 675 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 30 } ], "confidence": "estimate" },
+        "Normal->Pure": { "items": [ { "itemClass": "Desc_FF_Dirt_Fertilized_C", "name": "Peat", "amount": 1800 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 90 } ], "confidence": "estimate" }
+      }
+    },
+    {
+      "id": "ficsit_farming_loam",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_FF_Dirt_Wet_C",
+      "_comment": "Optional Ficsit Farming resource. Provisional raw-resource payment; confirm nodeKind in-game.",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_FF_Dirt_Wet_C", "name": "Loam", "amount": 675 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 40 } ], "confidence": "estimate" },
+        "Normal->Pure": { "items": [ { "itemClass": "Desc_FF_Dirt_Wet_C", "name": "Loam", "amount": 1800 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 120 } ], "confidence": "estimate" }
+      }
+    },
+    {
+      "id": "klib_kerr_crystal",
+      "nodeKind": "solid",
+      "resourceClass": "Res_KerrCrystal_C",
+      "_comment": "Optional KLib resource. Provisional raw-resource payment; confirm nodeKind in-game.",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Res_KerrCrystal_C", "name": "Kerr Crystal", "amount": 200 }, { "itemClass": "Desc_SpaceElevatorPart_4_C", "name": "Modular Engine", "amount": 20 }, { "itemClass": "Desc_SpaceElevatorPart_5_C", "name": "Adaptive Control Unit", "amount": 5 } ], "confidence": "estimate" },
+        "Normal->Pure": { "items": [ { "itemClass": "Res_KerrCrystal_C", "name": "Kerr Crystal", "amount": 500 }, { "itemClass": "Desc_SpaceElevatorPart_4_C", "name": "Modular Engine", "amount": 60 }, { "itemClass": "Desc_SpaceElevatorPart_5_C", "name": "Adaptive Control Unit", "amount": 15 } ], "confidence": "estimate" }
       }
     },
     {
@@ -140,8 +180,8 @@
       "nodeKind": "geyser",
       "resourceClass": null,
       "tiers": {
-        "Impure->Normal": { "items": [ { "itemClass": "Desc_Stator_C", "name": "Stator", "amount": 30 } ], "rawEquivalent": 390, "confidence": "medium" },
-        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Motor_C", "name": "Motor", "amount": 20 } ], "rawEquivalent": 970, "confidence": "medium" }
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_Stator_C", "name": "Stator", "amount": 30 }, { "itemClass": "Desc_SpaceElevatorPart_8_C", "name": "Thermal Propulsion Rocket", "amount": 5 }, { "itemClass": "Desc_SpaceElevatorPart_6_C", "name": "Magnetic Field Generator", "amount": 15 } ], "confidence": "medium" },
+        "Normal->Pure":   { "items": [ { "itemClass": "Desc_Motor_C", "name": "Motor", "amount": 20 }, { "itemClass": "Desc_SpaceElevatorPart_8_C", "name": "Thermal Propulsion Rocket", "amount": 15 }, { "itemClass": "Desc_SpaceElevatorPart_6_C", "name": "Magnetic Field Generator", "amount": 45 } ], "confidence": "medium" }
       }
     }
   ]
