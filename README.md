@@ -13,16 +13,34 @@ A Satisfactory mod: pay items to raise or lower the purity of any resource node 
 - Downgrade refunds 50% of what was actually paid for that step, rounded down; a node never goes below its original purity.
 - Payment and purity change happen together or not at all.
 - Saved with the game; no tick and no scan of the map.
-- Hosted multiplayer: every player can upgrade and downgrade with their own items, at the host's prices. The host runs the rules; clients send requests through a remote call object and receive the modified nodes and the host's cost table by replication. No dedicated server yet.
+- Multiplayer: every player can upgrade and downgrade with their own items, at the server's prices. The server runs the rules; clients send requests through a remote call object and receive the modified nodes and the server's cost table by replication. Windows client and Windows dedicated server packaging have been verified, and a node upgrade has been tested on a dedicated server. Linux server builds and the remaining multiplayer scenarios below still require validation.
 - Editable costs in `Resources/costs.json` (`/nu reload` in the chat).
+- Optional Ficsit Farming and KLib resource cost entries; see [the mapping and validation notes](docs/sfplus-resources.md). Prices are provisional; compatibility with SF+ and its custom miners still needs testing.
 - 13 languages, following the game language.
 
 ## Building from source
 1. Set up the Satisfactory modding environment (Unreal Engine CSS, Visual Studio 2022, Wwise, SML starter project) as described in the [official modding documentation](https://docs.ficsit.app/satisfactory-modding/latest/).
 2. Put the contents of this repository in `Mods/GameFeatures/NodeUpgrade/` of the starter project.
-3. Generate the Visual Studio project files, build **Development Editor / Win64**, then package **NodeUpgrade** with Alpakit.
+3. Generate the Visual Studio project files and build **Development Editor / Win64**.
+4. Package **NodeUpgrade** with **Alpakit Release**. The release targets in `Config/Alpakit.ini` are **Windows**, **WindowsServer**, and **LinuxServer**. Linux cross-compilation requires the matching Unreal Clang toolchain and Linux Wwise deployment platform from the official setup guide.
+5. For distribution through ficsit.app, upload the generated **multi-target release zip**. Changing the source configuration alone does not make an existing Windows-only release installable on servers. Increase the plugin version before publishing a new release.
 
-Built against SML 3.12 and game version CL502094 (Satisfactory 1.2). Windows only. Multiplayer can be tested on one PC with two copies of the game, as described in the official modding docs (Testing Your Mods).
+Built against SML 3.12 and game version CL502094 (Satisfactory 1.2). Client: Windows. Dedicated server targets: Windows and Linux. This repository contains only the plugin, not the Unreal/SML starter project or compiled server binaries.
+
+### Dedicated server validation
+
+Install the matching client build on every player and the matching server build on the dedicated server, including compatible SML versions. Keep `Resources/costs.json` on the server: clients receive that table by replication. UI input and widget hooks are initialized only on clients; the subsystem and remote call object remain registered on the server.
+
+Before marking a release as tested on dedicated servers:
+
+- Build and package both server targets successfully, and confirm that each package includes `Resources/costs.json`.
+- Start a server without a connected player. Check `FactoryGame.log` for `NodeUpgrade loaded`, a loaded cost table, and no widget-loading errors.
+- Connect two clients. Upgrade and downgrade a node through the Y menu; verify the requesting player's payment/refund, both clients' purity display, and the extractor's actual production rate.
+- Join after an upgrade, then disconnect and reconnect; verify that prices and modified nodes arrive correctly.
+- Save and restart the server; verify that purity and production rates are restored, including resource wells and geothermal generators.
+- Change the server's costs and run `/nu reload`; verify both clients receive the updated prices. Also check single-player and hosted multiplayer after these changes.
+
+See the official [dedicated server installation guide](https://docs.ficsit.app/satisfactory-modding/latest/ForUsers/DedicatedServerSetup.html) and [testing guide](https://docs.ficsit.app/satisfactory-modding/latest/Development/TestingResources.html).
 
 | Folder | Contents |
 |---|---|

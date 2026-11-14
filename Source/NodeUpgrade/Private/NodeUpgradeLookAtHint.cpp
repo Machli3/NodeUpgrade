@@ -30,7 +30,7 @@ void FNodeUpgradeLookAtHint::Refresh(AFGCharacterPlayer* Character, AActor* Look
 
 void FNodeUpgradeLookAtHint::RefreshLocal(UWorld* World)
 {
-	if (World == nullptr)
+	if (World == nullptr || World->GetNetMode() == NM_DedicatedServer)
 	{
 		return;
 	}

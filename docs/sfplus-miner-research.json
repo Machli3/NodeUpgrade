@@ -1,0 +1,506 @@
+﻿[
+    {
+        "file":  "PDA_Extract_Coal_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.052Z"
+    },
+    {
+        "file":  "PDA_Extract_Coal_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.054Z"
+    },
+    {
+        "file":  "PDA_Extract_Coal_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.059Z"
+    },
+    {
+        "file":  "PDA_Extract_Coal_Raw.json",
+        "name":  "Modular Miner extract Coal",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.048Z"
+    },
+    {
+        "file":  "PDA_Extract_Coal_Waste1.json",
+        "name":  "Crusher Module replace product with Carbon Powder",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.050Z"
+    },
+    {
+        "file":  "PDA_Extract_Crotinium_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreBauxite/Desc_OreBauxite",
+        "drillTier":  2,
+        "timestamp":  "2026-08-30T09:04:35.224Z"
+    },
+    {
+        "file":  "PDA_Extract_Crotinium_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreBauxite/Desc_OreBauxite",
+        "drillTier":  2,
+        "timestamp":  "2026-08-30T09:04:35.224Z"
+    },
+    {
+        "file":  "PDA_Extract_Crotinium_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreBauxite/Desc_OreBauxite",
+        "drillTier":  2,
+        "timestamp":  "2026-08-30T09:04:35.225Z"
+    },
+    {
+        "file":  "PDA_Extract_Crotinium_Raw.json",
+        "name":  "Modular Miner extract Montanion Ore",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreBauxite/Desc_OreBauxite",
+        "drillTier":  2,
+        "timestamp":  "2026-08-30T09:04:35.219Z"
+    },
+    {
+        "file":  "PDA_Extract_Crotinium_Waste1.json",
+        "name":  "Crusher Module replace product with Crushed Montanion",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreBauxite/Desc_OreBauxite",
+        "drillTier":  2,
+        "timestamp":  "2026-08-30T09:04:35.223Z"
+    },
+    {
+        "file":  "PDA_Extract_Cryolite_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/RawQuartz/Desc_RawQuartz",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.216Z"
+    },
+    {
+        "file":  "PDA_Extract_Cryolite_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/RawQuartz/Desc_RawQuartz",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.216Z"
+    },
+    {
+        "file":  "PDA_Extract_Cryolite_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/RawQuartz/Desc_RawQuartz",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.217Z"
+    },
+    {
+        "file":  "PDA_Extract_Cryolite_Raw.json",
+        "name":  "Modular Miner extract Kyalite",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/RawQuartz/Desc_RawQuartz",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.214Z"
+    },
+    {
+        "file":  "PDA_Extract_Cryolite_Waste1.json",
+        "name":  "Crusher Module replace product with Salt",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/RawQuartz/Desc_RawQuartz",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.215Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Fert_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Fertilized",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.270Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Fert_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Fertilized",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.271Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Fert_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Fertilized",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.271Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Fert_Raw.json",
+        "name":  "Modular Miner extract Peat",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Fertilized",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.268Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Fert_Waste1.json",
+        "name":  "Crusher Module replace product with Sand",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Fertilized",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.269Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Fert_Waste2.json",
+        "name":  "Smelter Module replace product with Crushed Gangue",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Fertilized",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.270Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.278Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.279Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.280Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Raw.json",
+        "name":  "Modular Miner extract Dirt",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.277Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Waste1.json",
+        "name":  "Crusher Module replace product with Sand",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.277Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Waste2.json",
+        "name":  "Smelter Module replace product with Crushed Gangue",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.278Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Wet_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Wet",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.286Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Wet_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Wet",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.287Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Wet_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Wet",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.287Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Wet_Raw.json",
+        "name":  "Modular Miner extract Loam",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Wet",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.284Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Wet_Waste1.json",
+        "name":  "Crusher Module replace product with Sand",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Wet",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.285Z"
+    },
+    {
+        "file":  "PDA_Extract_Dirt_Wet_Waste2.json",
+        "name":  "Smelter Module replace product with Crushed Gangue",
+        "resource":  "/FicsitFarming/Resources/RawResources/Dirt/Desc_FF_Dirt_Wet",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.286Z"
+    },
+    {
+        "file":  "PDA_Extract_Rubyte_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.188Z"
+    },
+    {
+        "file":  "PDA_Extract_Rubyte_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.189Z"
+    },
+    {
+        "file":  "PDA_Extract_Rubyte_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.189Z"
+    },
+    {
+        "file":  "PDA_Extract_Rubyte_Raw.json",
+        "name":  "Modular Miner extract Larrussite Ore",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.177Z"
+    },
+    {
+        "file":  "PDA_Extract_Rubyte_Waste1.json",
+        "name":  "Crusher Module replace product with Crushed Larrussite",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.180Z"
+    },
+    {
+        "file":  "PDA_Extract_Rubyte_Waste2.json",
+        "name":  "Smelter Module replace product with Zinc Ingot",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.187Z"
+    },
+    {
+        "file":  "PDA_Extract_SAM_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/SAM/Desc_SAM",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.174Z"
+    },
+    {
+        "file":  "PDA_Extract_SAM_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/SAM/Desc_SAM",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.175Z"
+    },
+    {
+        "file":  "PDA_Extract_SAM_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/SAM/Desc_SAM",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.175Z"
+    },
+    {
+        "file":  "PDA_Extract_SAM_Raw.json",
+        "name":  "Modular Miner extract SAM",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/SAM/Desc_SAM",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:34.979Z"
+    },
+    {
+        "file":  "PDA_Extract_Sapherit_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreCopper/Desc_OreCopper",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.203Z"
+    },
+    {
+        "file":  "PDA_Extract_Sapherit_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreCopper/Desc_OreCopper",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.203Z"
+    },
+    {
+        "file":  "PDA_Extract_Sapherit_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreCopper/Desc_OreCopper",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.204Z"
+    },
+    {
+        "file":  "PDA_Extract_Sapherit_Raw.json",
+        "name":  "Modular Miner extract Callanite Ore",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreCopper/Desc_OreCopper",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.198Z"
+    },
+    {
+        "file":  "PDA_Extract_Sapherit_Waste1.json",
+        "name":  "Crusher Module replace product with Crushed Callanite",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreCopper/Desc_OreCopper",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.199Z"
+    },
+    {
+        "file":  "PDA_Extract_Sapherit_Waste2.json",
+        "name":  "Smelter Module replace product with Copper Ingot",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreCopper/Desc_OreCopper",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.202Z"
+    },
+    {
+        "file":  "PDA_Extract_Satmonium_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreGold/Desc_OreGold",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.211Z"
+    },
+    {
+        "file":  "PDA_Extract_Satmonium_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreGold/Desc_OreGold",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.211Z"
+    },
+    {
+        "file":  "PDA_Extract_Satmonium_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreGold/Desc_OreGold",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.212Z"
+    },
+    {
+        "file":  "PDA_Extract_Satmonium_Raw.json",
+        "name":  "Modular Miner extract Aurovite Ore",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreGold/Desc_OreGold",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.207Z"
+    },
+    {
+        "file":  "PDA_Extract_Satmonium_Waste1.json",
+        "name":  "Crusher Module replace product with Crushed Aurovite",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreGold/Desc_OreGold",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.208Z"
+    },
+    {
+        "file":  "PDA_Extract_Satmonium_Waste2.json",
+        "name":  "Smelter Module replace product with Caterium Ingot",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreGold/Desc_OreGold",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.210Z"
+    },
+    {
+        "file":  "PDA_Extract_Stritarit_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.194Z"
+    },
+    {
+        "file":  "PDA_Extract_Stritarit_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.195Z"
+    },
+    {
+        "file":  "PDA_Extract_Stritarit_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.196Z"
+    },
+    {
+        "file":  "PDA_Extract_Stritarit_Raw.json",
+        "name":  "Modular Miner extract Siterite Ore",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.191Z"
+    },
+    {
+        "file":  "PDA_Extract_Stritarit_Waste1.json",
+        "name":  "Crusher Module replace product with Crushed Siterite",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.192Z"
+    },
+    {
+        "file":  "PDA_Extract_Stritarit_Waste2.json",
+        "name":  "Smelter Module replace product with Iron Ingot",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.194Z"
+    },
+    {
+        "file":  "PDA_Extract_Sulfur_Fluid1.json",
+        "name":  "Fluid Module use Water to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Sulfur/Desc_Sulfur",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.154Z"
+    },
+    {
+        "file":  "PDA_Extract_Sulfur_Fluid2.json",
+        "name":  "Fluid Module use Muriatic Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Sulfur/Desc_Sulfur",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.155Z"
+    },
+    {
+        "file":  "PDA_Extract_Sulfur_Fluid3.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Sulfur/Desc_Sulfur",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.155Z"
+    },
+    {
+        "file":  "PDA_Extract_Sulfur_Waste1_Fluid1.json",
+        "name":  "Crusher Module replace product with Sulfur Powder",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Sulfur/Desc_Sulfur",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.152Z"
+    },
+    {
+        "file":  "PDA_Extract_Sulfur_Waste1_Fluid2.json",
+        "name":  "Crusher Module replace product with Sulfur Powder",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Sulfur/Desc_Sulfur",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.153Z"
+    },
+    {
+        "file":  "PDA_Extract_Sulfur_Waste1_Fluid3.json",
+        "name":  "Crusher Module replace product with Sulfur Powder",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/Sulfur/Desc_Sulfur",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.154Z"
+    },
+    {
+        "file":  "PDA_Extract_TimeCrystal_Fluid1.json",
+        "name":  "Fluid Module use Slug Slime to boost Modular Miner",
+        "resource":  "/KLib/Assets/Ressources/Raw/Nodes/QuantumCystal/Res_KerrCrystal",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.289Z"
+    },
+    {
+        "file":  "PDA_Extract_TimeCrystal_Fluid2.json",
+        "name":  "Fluid Module use Energized Slug Slime to boost Modular Miner",
+        "resource":  "/KLib/Assets/Ressources/Raw/Nodes/QuantumCystal/Res_KerrCrystal",
+        "drillTier":  1,
+        "timestamp":  "2026-08-30T09:04:35.290Z"
+    },
+    {
+        "file":  "PDA_Extract_Uran_Fluid1.json",
+        "name":  "Fluid Module use Sulfuric Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreUranium/Desc_OreUranium",
+        "drillTier":  3,
+        "timestamp":  "2026-08-30T09:04:35.227Z"
+    },
+    {
+        "file":  "PDA_Extract_Uran_Fluid2.json",
+        "name":  "Fluid Module use Nitric Acid to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreUranium/Desc_OreUranium",
+        "drillTier":  3,
+        "timestamp":  "2026-08-30T09:04:35.230Z"
+    },
+    {
+        "file":  "PDA_Extract_Uran_Fluid3.json",
+        "name":  "Fluid Module use Energized Slug Slime to boost Modular Miner",
+        "resource":  "/Game/FactoryGame/Resource/RawResources/OreUranium/Desc_OreUranium",
+        "drillTier":  3,
+        "timestamp":  "2026-08-30T09:04:35.231Z"
+    }
+]
