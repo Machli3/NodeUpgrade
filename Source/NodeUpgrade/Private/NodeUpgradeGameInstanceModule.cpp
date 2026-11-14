@@ -1,5 +1,6 @@
 #include "NodeUpgradeGameInstanceModule.h"
 
+#include "Misc/CoreMisc.h"
 #include "NodeUpgradeHintRowWidget.h"
 #include "NodeUpgradeRemoteCallObject.h"
 #include "Patching/WidgetBlueprintHookManager.h"
@@ -13,6 +14,15 @@ namespace
 UNodeUpgradeGameInstanceModule::UNodeUpgradeGameInstanceModule()
 {
 	bRootModule = true;
+
+	// Required on clients and servers: every player submits requests to server authority.
+	RemoteCallObjects.Add(UNodeUpgradeRemoteCallObject::StaticClass());
+
+	// Dedicated servers have no HUD and must not load or patch the game's prompt widget.
+	if (IsRunningDedicatedServer())
+	{
+		return;
+	}
 
 	UWidgetBlueprintHookData* HintLineHook = CreateDefaultSubobject<UWidgetBlueprintHookData>(TEXT("HintLineHook"));
 	HintLineHook->DeveloperComment = TEXT("NodeUpgrade: 'Press [Y] to upgrade this node' line under the game's look-at prompt.");
@@ -30,6 +40,4 @@ UNodeUpgradeGameInstanceModule::UNodeUpgradeGameInstanceModule()
 	// The gap above the line is inside UNodeUpgradeHintRowWidget.
 	WidgetBlueprintHooks.Add(HintLineHook);
 
-	// Hosted multiplayer: clients send their upgrade / downgrade requests to the host through this object.
-	RemoteCallObjects.Add(UNodeUpgradeRemoteCallObject::StaticClass());
 }

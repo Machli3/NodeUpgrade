@@ -136,6 +136,46 @@
       }
     },
     {
+      "id": "ficsit_farming_dirt",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_FF_Dirt_C",
+      "_comment": "Optional Ficsit Farming resource. Descriptor and Modular Miner mapping checked in K-Mods public wiki data; confirm nodeKind in-game. Costs are provisional, not SF+ balance recommendations.",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_FF_Dirt_C", "name": "Dirt", "amount": 675 } ], "confidence": "estimate" },
+        "Normal->Pure": { "items": [ { "itemClass": "Desc_FF_Dirt_C", "name": "Dirt", "amount": 1800 } ], "confidence": "estimate" }
+      }
+    },
+    {
+      "id": "ficsit_farming_peat",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_FF_Dirt_Fertilized_C",
+      "_comment": "Optional Ficsit Farming resource. Provisional raw-resource payment; confirm nodeKind in-game.",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_FF_Dirt_Fertilized_C", "name": "Peat", "amount": 675 } ], "confidence": "estimate" },
+        "Normal->Pure": { "items": [ { "itemClass": "Desc_FF_Dirt_Fertilized_C", "name": "Peat", "amount": 1800 } ], "confidence": "estimate" }
+      }
+    },
+    {
+      "id": "ficsit_farming_loam",
+      "nodeKind": "solid",
+      "resourceClass": "Desc_FF_Dirt_Wet_C",
+      "_comment": "Optional Ficsit Farming resource. Provisional raw-resource payment; confirm nodeKind in-game.",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_FF_Dirt_Wet_C", "name": "Loam", "amount": 675 } ], "confidence": "estimate" },
+        "Normal->Pure": { "items": [ { "itemClass": "Desc_FF_Dirt_Wet_C", "name": "Loam", "amount": 1800 } ], "confidence": "estimate" }
+      }
+    },
+    {
+      "id": "klib_kerr_crystal",
+      "nodeKind": "solid",
+      "resourceClass": "Res_KerrCrystal_C",
+      "_comment": "Optional KLib resource. Provisional raw-resource payment; confirm nodeKind in-game.",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Res_KerrCrystal_C", "name": "Kerr Crystal", "amount": 200 } ], "confidence": "estimate" },
+        "Normal->Pure": { "items": [ { "itemClass": "Res_KerrCrystal_C", "name": "Kerr Crystal", "amount": 500 } ], "confidence": "estimate" }
+      }
+    },
+    {
       "id": "geyser",
       "nodeKind": "geyser",
       "resourceClass": null,

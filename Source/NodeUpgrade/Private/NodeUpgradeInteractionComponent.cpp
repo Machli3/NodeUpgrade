@@ -95,7 +95,7 @@ UNodeUpgradeInteractionComponent::UNodeUpgradeInteractionComponent()
 
 void UNodeUpgradeInteractionComponent::BindToPlayer(AFGCharacterPlayer* Character, UInputComponent* InputComponent)
 {
-	if (!IsValid(Character) || InputComponent == nullptr)
+	if (!IsValid(Character) || !Character->IsLocallyControlled() || Character->GetNetMode() == NM_DedicatedServer || InputComponent == nullptr)
 	{
 		return;
 	}
