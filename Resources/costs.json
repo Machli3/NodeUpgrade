@@ -176,6 +176,16 @@
       }
     },
     {
+      "id": "klib_algal_mass",
+      "nodeKind": "fluid_node",
+      "resourceClass": "Res_LiquidBioWater_C",
+      "_comment": "Optional SF+/KLib Algal Mass. Descriptor and standard extractor base verified against the official K-Mods export; verify node kind and production rates in-game. Provisional early-game costs; pay solid items rather than unpackaged fluid.",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_IronPlateReinforced_C", "name": "Reinforced Iron Plate", "amount": 100 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 25 } ], "confidence": "estimate" },
+        "Normal->Pure": { "items": [ { "itemClass": "Desc_Rotor_C", "name": "Rotor", "amount": 100 }, { "itemClass": "Desc_SpaceElevatorPart_1_C", "name": "Smart Plating", "amount": 75 } ], "confidence": "estimate" }
+      }
+    },
+    {
       "id": "geyser",
       "nodeKind": "geyser",
       "resourceClass": null,
