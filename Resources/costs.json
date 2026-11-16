@@ -186,6 +186,16 @@
       }
     },
     {
+      "id": "klib_chlorine_well_satellite",
+      "nodeKind": "fracking_satellite",
+      "resourceClass": "Desc_Gas_Chlor_C",
+      "_comment": "Optional SF+/KLib Chlorine Gas well satellite. Official map export contains chlorine wells with purity-bearing satellites; the standard fracking extractor allows this descriptor. Costs are provisional; verify upgrade, downgrade, persistence and actual flow in-game. The central well core is not upgraded directly.",
+      "tiers": {
+        "Impure->Normal": { "items": [ { "itemClass": "Desc_SteelPipe_C", "name": "Steel Pipe", "amount": 200 }, { "itemClass": "Desc_SpaceElevatorPart_4_C", "name": "Modular Engine", "amount": 20 }, { "itemClass": "Desc_SpaceElevatorPart_5_C", "name": "Adaptive Control Unit", "amount": 5 } ], "confidence": "estimate" },
+        "Normal->Pure": { "items": [ { "itemClass": "Desc_SteelPlate_C", "name": "Steel Beam", "amount": 250 }, { "itemClass": "Desc_SpaceElevatorPart_4_C", "name": "Modular Engine", "amount": 60 }, { "itemClass": "Desc_SpaceElevatorPart_5_C", "name": "Adaptive Control Unit", "amount": 15 } ], "confidence": "estimate" }
+      }
+    },
+    {
       "id": "geyser",
       "nodeKind": "geyser",
       "resourceClass": null,
